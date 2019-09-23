@@ -1,0 +1,554 @@
+2019-09-23 08:26:27.991 ERROR 4480 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'logging.level' to java.util.Map<java.lang.String, java.lang.String>
+	at org.springframework.boot.context.properties.bind.Binder.handleBindError(Binder.java:242) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:218) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:202) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:172) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.setLogLevels(LoggingApplicationListener.java:338) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeFinalLoggingLevels(LoggingApplicationListener.java:314) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:265) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:226) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:203) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:127) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:76) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:53) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:341) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at com.yayo.MyBookApplication.main(MyBookApplication.java:11) ~[classes/:na]
+Caused by: org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.lang.String] to type [java.util.Map<java.lang.String, java.lang.String>]
+	at org.springframework.core.convert.support.GenericConversionService.handleConverterNotFound(GenericConversionService.java:321) ~[spring-core-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.core.convert.support.GenericConversionService.convert(GenericConversionService.java:194) ~[spring-core-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter$CompositeConversionService.convert(BindConverter.java:170) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:96) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:88) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.MapBinder.bindAggregate(MapBinder.java:64) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.AggregateBinder.bind(AggregateBinder.java:56) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.lambda$bindAggregate$2(Binder.java:293) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder$Context.withIncreasedDepth(Binder.java:429) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder$Context.access$100(Binder.java:372) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bindAggregate(Binder.java:293) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bindObject(Binder.java:254) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:214) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	... 18 common frames omitted
+
+2019-09-23 08:27:34.222 ERROR 7316 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'logging.level' to java.util.Map<java.lang.String, java.lang.String>
+	at org.springframework.boot.context.properties.bind.Binder.handleBindError(Binder.java:242) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:218) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:202) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:172) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.setLogLevels(LoggingApplicationListener.java:338) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeFinalLoggingLevels(LoggingApplicationListener.java:314) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:265) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:226) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:203) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:127) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:76) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:53) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:341) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at com.yayo.MyBookApplication.main(MyBookApplication.java:11) ~[classes/:na]
+Caused by: org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.lang.String] to type [java.util.Map<java.lang.String, java.lang.String>]
+	at org.springframework.core.convert.support.GenericConversionService.handleConverterNotFound(GenericConversionService.java:321) ~[spring-core-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.core.convert.support.GenericConversionService.convert(GenericConversionService.java:194) ~[spring-core-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter$CompositeConversionService.convert(BindConverter.java:170) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:96) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:88) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.MapBinder.bindAggregate(MapBinder.java:64) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.AggregateBinder.bind(AggregateBinder.java:56) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.lambda$bindAggregate$2(Binder.java:293) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder$Context.withIncreasedDepth(Binder.java:429) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder$Context.access$100(Binder.java:372) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bindAggregate(Binder.java:293) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bindObject(Binder.java:254) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:214) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	... 18 common frames omitted
+
+2019-09-23 08:27:48.255 ERROR 14560 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'logging.level' to java.util.Map<java.lang.String, java.lang.String>
+	at org.springframework.boot.context.properties.bind.Binder.handleBindError(Binder.java:242) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:218) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:202) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:172) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.setLogLevels(LoggingApplicationListener.java:338) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeFinalLoggingLevels(LoggingApplicationListener.java:314) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:265) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:226) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:203) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:127) ~[spring-context-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:76) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:53) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:341) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1214) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1203) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at com.yayo.MyBookApplication.main(MyBookApplication.java:11) ~[classes/:na]
+Caused by: org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.lang.String] to type [java.util.Map<java.lang.String, java.lang.String>]
+	at org.springframework.core.convert.support.GenericConversionService.handleConverterNotFound(GenericConversionService.java:321) ~[spring-core-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.core.convert.support.GenericConversionService.convert(GenericConversionService.java:194) ~[spring-core-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter$CompositeConversionService.convert(BindConverter.java:170) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:96) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:88) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.MapBinder.bindAggregate(MapBinder.java:64) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.AggregateBinder.bind(AggregateBinder.java:56) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.lambda$bindAggregate$2(Binder.java:293) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder$Context.withIncreasedDepth(Binder.java:429) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder$Context.access$100(Binder.java:372) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bindAggregate(Binder.java:293) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bindObject(Binder.java:254) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:214) ~[spring-boot-2.1.7.RELEASE.jar:2.1.7.RELEASE]
+	... 18 common frames omitted
+
+2019-09-23 08:28:42.841  INFO 9388 --- [main] com.yayo.MyBookApplication               : Starting MyBookApplication on Yayo with PID 9388 (F:\work\my-book\target\classes started by Admin in F:\work\my-book)
+2019-09-23 08:28:42.842 DEBUG 9388 --- [main] com.yayo.MyBookApplication               : Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+2019-09-23 08:28:42.843  INFO 9388 --- [main] com.yayo.MyBookApplication               : No active profile set, falling back to default profiles: default
+2019-09-23 08:28:43.486  INFO 9388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2019-09-23 08:28:43.500  INFO 9388 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-23 08:28:43.500  INFO 9388 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-23 08:28:43.639  INFO 9388 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-09-23 08:28:43.644  INFO 9388 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-23 08:28:43.644  INFO 9388 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 779 ms
+2019-09-23 08:28:43.879  INFO 9388 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:28:43.915  INFO 9388 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-23 08:28:44.013  INFO 9388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2019-09-23 08:28:44.015  INFO 9388 --- [main] com.yayo.MyBookApplication               : Started MyBookApplication in 1.376 seconds (JVM running for 1.951)
+2019-09-23 08:28:51.841  INFO 9388 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 08:28:51.843  INFO 9388 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-23 08:28:51.847  INFO 9388 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-09-23 08:28:51.855  INFO 9388 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:28:52.056  WARN 9388 --- [http-nio-7777-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [198] milliseconds.
+2019-09-23 08:28:53.963  INFO 9388 --- [http-nio-7777-exec-2] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/login
+2019-09-23 08:28:53.976  INFO 9388 --- [http-nio-7777-exec-2] com.yayo.sys.controller.LoginController  : fh58q2ea6thauof5ikg98fe2ciafh50r
+2019-09-23 08:28:53.984  INFO 9388 --- [http-nio-7777-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-23 08:28:54.156  INFO 9388 --- [http-nio-7777-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-23 08:28:54.161 DEBUG 9388 --- [http-nio-7777-exec-2] c.y.s.m.U.findByUserNamePassword         : ==>  Preparing: select * from user where username = ? and password = ? 
+2019-09-23 08:28:54.174 DEBUG 9388 --- [http-nio-7777-exec-2] c.y.s.m.U.findByUserNamePassword         : ==> Parameters: 15886223373(String), fh58q2ea6thauof5ikg98fe2ciafh50r(String)
+2019-09-23 08:28:54.187 DEBUG 9388 --- [http-nio-7777-exec-2] c.y.s.m.U.findByUserNamePassword         : <==      Total: 1
+2019-09-23 08:28:54.193  INFO 9388 --- [http-nio-7777-exec-7] com.yayo.base.component.MyInterceptor    : request.uri:/welcome
+2019-09-23 08:28:54.351  INFO 9388 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:28:54.351  INFO 9388 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:28:54.352 ERROR 9388 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:28:54.352 ERROR 9388 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:28:54.450  INFO 9388 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:28:54.450 ERROR 9388 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:28:54.455  INFO 9388 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:28:54.455 ERROR 9388 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:28:57.578  INFO 9388 --- [http-nio-7777-exec-2] com.yayo.base.component.MyInterceptor    : request.uri:/choice
+2019-09-23 08:28:57.653  INFO 9388 --- [http-nio-7777-exec-7] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/list
+2019-09-23 08:28:57.656 DEBUG 9388 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:28:57.657 DEBUG 9388 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:28:57.658 DEBUG 9388 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:28:57.675 DEBUG 9388 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentIds       : ==>  Preparing: select * from categories where categories_parent in ( ? , ? , ? , ? ) 
+2019-09-23 08:28:57.676 DEBUG 9388 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentIds       : ==> Parameters: 32(Integer), 120(Integer), 130(Integer), 171(Integer)
+2019-09-23 08:28:57.678 DEBUG 9388 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentIds       : <==      Total: 15
+2019-09-23 08:28:57.680 DEBUG 9388 --- [http-nio-7777-exec-7] com.yayo.sys.mapper.ChoiceMapper.count   : ==>  Preparing: select count(choice_id) from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) 
+2019-09-23 08:28:57.680 DEBUG 9388 --- [http-nio-7777-exec-7] com.yayo.sys.mapper.ChoiceMapper.count   : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer)
+2019-09-23 08:28:57.681 DEBUG 9388 --- [http-nio-7777-exec-7] com.yayo.sys.mapper.ChoiceMapper.count   : <==      Total: 1
+2019-09-23 08:28:57.682 DEBUG 9388 --- [http-nio-7777-exec-7] com.yayo.sys.mapper.ChoiceMapper.list    : ==>  Preparing: select * from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) limit ?,? 
+2019-09-23 08:28:57.683 DEBUG 9388 --- [http-nio-7777-exec-7] com.yayo.sys.mapper.ChoiceMapper.list    : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer), 0(Integer), 10(Integer)
+2019-09-23 08:28:57.684 DEBUG 9388 --- [http-nio-7777-exec-7] com.yayo.sys.mapper.ChoiceMapper.list    : <==      Total: 10
+2019-09-23 08:28:59.386  INFO 9388 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:28:59.459  INFO 9388 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:28:59.460 DEBUG 9388 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:28:59.460 DEBUG 9388 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:28:59.461 DEBUG 9388 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:29:00.922  INFO 9388 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:29:00.923 DEBUG 9388 --- [http-nio-7777-exec-4] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:29:00.923 DEBUG 9388 --- [http-nio-7777-exec-4] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 120(Integer)
+2019-09-23 08:29:00.924 DEBUG 9388 --- [http-nio-7777-exec-4] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 6
+2019-09-23 08:29:07.308  INFO 9388 --- [http-nio-7777-exec-8] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:29:07.309  INFO 9388 --- [http-nio-7777-exec-8] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:29:07.310  INFO 9388 --- [http-nio-7777-exec-8] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:29:07.518  INFO 9388 --- [http-nio-7777-exec-8] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:29:07.522  INFO 9388 --- [http-nio-7777-exec-8] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:29:07.524 DEBUG 9388 --- [http-nio-7777-exec-8] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) ; insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) 
+2019-09-23 08:29:07.524 DEBUG 9388 --- [http-nio-7777-exec-8] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==> Parameters: 108(Integer), 我是一个问题(String), 1(Integer), [{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}](String), A(String), null, 108(Integer), 我是第二个问题(String), 2(Integer), [{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}](String), B,D(String), null
+2019-09-23 08:29:07.554 ERROR 9388 --- [http-nio-7777-exec-8] c.y.sys.service.impl.ChoiceServiceImpl   : parsing excel error,catch:
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+### The error may exist in com/yayo/sys/mapper/ChoiceMapper.java (best guess)
+### The error may involve com.yayo.sys.mapper.ChoiceMapper.insertBatch-Inline
+### The error occurred while setting parameters
+### SQL: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) ; insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?)
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+2019-09-23 08:30:58.116  INFO 9388 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:30:58.117  INFO 9388 --- [http-nio-7777-exec-1] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:30:58.117  INFO 9388 --- [http-nio-7777-exec-1] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:30:58.136  INFO 9388 --- [http-nio-7777-exec-1] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:30:58.136  INFO 9388 --- [http-nio-7777-exec-1] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:30:58.137 DEBUG 9388 --- [http-nio-7777-exec-1] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) ; insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) 
+2019-09-23 08:30:58.137 DEBUG 9388 --- [http-nio-7777-exec-1] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==> Parameters: 108(Integer), 我是一个问题(String), 1(Integer), [{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}](String), A(String), null, 108(Integer), 我是第二个问题(String), 2(Integer), [{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}](String), B,D(String), null
+2019-09-23 08:30:58.139 ERROR 9388 --- [http-nio-7777-exec-1] c.y.sys.service.impl.ChoiceServiceImpl   : parsing excel error,catch:
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+### The error may exist in com/yayo/sys/mapper/ChoiceMapper.java (best guess)
+### The error may involve com.yayo.sys.mapper.ChoiceMapper.insertBatch-Inline
+### The error occurred while setting parameters
+### SQL: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) ; insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?)
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+2019-09-23 08:31:11.691  INFO 9388 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:31:11.692  INFO 9388 --- [http-nio-7777-exec-3] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:31:11.692  INFO 9388 --- [http-nio-7777-exec-3] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:31:11.707  INFO 9388 --- [http-nio-7777-exec-3] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:31:11.707  INFO 9388 --- [http-nio-7777-exec-3] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:31:11.708 DEBUG 9388 --- [http-nio-7777-exec-3] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) ; insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) 
+2019-09-23 08:31:11.708 DEBUG 9388 --- [http-nio-7777-exec-3] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==> Parameters: 108(Integer), 我是一个问题(String), 1(Integer), [{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}](String), A(String), null, 108(Integer), 我是第二个问题(String), 2(Integer), [{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}](String), B,D(String), null
+2019-09-23 08:31:11.709 ERROR 9388 --- [http-nio-7777-exec-3] c.y.sys.service.impl.ChoiceServiceImpl   : parsing excel error,catch:
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+### The error may exist in com/yayo/sys/mapper/ChoiceMapper.java (best guess)
+### The error may involve com.yayo.sys.mapper.ChoiceMapper.insertBatch-Inline
+### The error occurred while setting parameters
+### SQL: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) ; insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?)
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into choice (categories_id, choice_question, choice_type, choice_answer,c' at line 1
+2019-09-23 08:38:14.065  INFO 9388 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:38:14.066  INFO 9388 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-23 08:38:14.074  INFO 9388 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-23 08:38:17.257  INFO 14672 --- [main] com.yayo.MyBookApplication               : Starting MyBookApplication on Yayo with PID 14672 (F:\work\my-book\target\classes started by Admin in F:\work\my-book)
+2019-09-23 08:38:17.259 DEBUG 14672 --- [main] com.yayo.MyBookApplication               : Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+2019-09-23 08:38:17.260  INFO 14672 --- [main] com.yayo.MyBookApplication               : No active profile set, falling back to default profiles: default
+2019-09-23 08:38:17.987  INFO 14672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2019-09-23 08:38:18.002  INFO 14672 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-23 08:38:18.003  INFO 14672 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-23 08:38:18.156  INFO 14672 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-09-23 08:38:18.161  INFO 14672 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-23 08:38:18.162  INFO 14672 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 879 ms
+2019-09-23 08:38:18.397  INFO 14672 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:38:18.435  INFO 14672 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-23 08:38:18.534  INFO 14672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2019-09-23 08:38:18.537  INFO 14672 --- [main] com.yayo.MyBookApplication               : Started MyBookApplication in 1.49 seconds (JVM running for 2.104)
+2019-09-23 08:38:51.480  INFO 14672 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:38:54.476  INFO 3784 --- [main] com.yayo.MyBookApplication               : Starting MyBookApplication on Yayo with PID 3784 (F:\work\my-book\target\classes started by Admin in F:\work\my-book)
+2019-09-23 08:38:54.478 DEBUG 3784 --- [main] com.yayo.MyBookApplication               : Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+2019-09-23 08:38:54.478  INFO 3784 --- [main] com.yayo.MyBookApplication               : No active profile set, falling back to default profiles: default
+2019-09-23 08:38:55.117  INFO 3784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2019-09-23 08:38:55.130  INFO 3784 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-23 08:38:55.131  INFO 3784 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-23 08:38:55.268  INFO 3784 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-09-23 08:38:55.273  INFO 3784 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-23 08:38:55.273  INFO 3784 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 772 ms
+2019-09-23 08:38:55.501  INFO 3784 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:38:55.537  INFO 3784 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-23 08:38:55.635  INFO 3784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2019-09-23 08:38:55.637  INFO 3784 --- [main] com.yayo.MyBookApplication               : Started MyBookApplication in 1.361 seconds (JVM running for 1.928)
+2019-09-23 08:38:56.604  INFO 3784 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 08:38:56.605  INFO 3784 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-23 08:38:56.609  INFO 3784 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-09-23 08:38:56.617  INFO 3784 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:38:56.845  WARN 3784 --- [http-nio-7777-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [226] milliseconds.
+2019-09-23 08:38:58.174  INFO 3784 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/login
+2019-09-23 08:38:58.187  INFO 3784 --- [http-nio-7777-exec-5] com.yayo.sys.controller.LoginController  : fh58q2ea6thauof5ikg98fe2ciafh50r
+2019-09-23 08:38:58.195  INFO 3784 --- [http-nio-7777-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-23 08:38:58.364  INFO 3784 --- [http-nio-7777-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-23 08:38:58.368 DEBUG 3784 --- [http-nio-7777-exec-5] c.y.s.m.U.findByUserNamePassword         : ==>  Preparing: select * from user where username = ? and password = ? 
+2019-09-23 08:38:58.381 DEBUG 3784 --- [http-nio-7777-exec-5] c.y.s.m.U.findByUserNamePassword         : ==> Parameters: 15886223373(String), fh58q2ea6thauof5ikg98fe2ciafh50r(String)
+2019-09-23 08:38:58.394 DEBUG 3784 --- [http-nio-7777-exec-5] c.y.s.m.U.findByUserNamePassword         : <==      Total: 1
+2019-09-23 08:38:58.400  INFO 3784 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/welcome
+2019-09-23 08:38:58.549  INFO 3784 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:38:58.549  INFO 3784 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:38:58.549 ERROR 3784 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:38:58.549 ERROR 3784 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:39:01.035  INFO 3784 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : request.uri:/choice
+2019-09-23 08:39:01.109  INFO 3784 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/list
+2019-09-23 08:39:01.112 DEBUG 3784 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:39:01.112 DEBUG 3784 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:39:01.113 DEBUG 3784 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:39:01.129 DEBUG 3784 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==>  Preparing: select * from categories where categories_parent in ( ? , ? , ? , ? ) 
+2019-09-23 08:39:01.130 DEBUG 3784 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==> Parameters: 32(Integer), 120(Integer), 130(Integer), 171(Integer)
+2019-09-23 08:39:01.132 DEBUG 3784 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : <==      Total: 15
+2019-09-23 08:39:01.134 DEBUG 3784 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==>  Preparing: select count(choice_id) from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) 
+2019-09-23 08:39:01.134 DEBUG 3784 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer)
+2019-09-23 08:39:01.136 DEBUG 3784 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : <==      Total: 1
+2019-09-23 08:39:01.137 DEBUG 3784 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==>  Preparing: select * from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) limit ?,? 
+2019-09-23 08:39:01.137 DEBUG 3784 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer), 0(Integer), 10(Integer)
+2019-09-23 08:39:01.139 DEBUG 3784 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : <==      Total: 10
+2019-09-23 08:39:02.348  INFO 3784 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:39:02.425  INFO 3784 --- [http-nio-7777-exec-2] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:39:02.426 DEBUG 3784 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:39:02.426 DEBUG 3784 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:39:02.427 DEBUG 3784 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:39:03.345  INFO 3784 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:39:03.347 DEBUG 3784 --- [http-nio-7777-exec-5] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:39:03.347 DEBUG 3784 --- [http-nio-7777-exec-5] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 120(Integer)
+2019-09-23 08:39:03.349 DEBUG 3784 --- [http-nio-7777-exec-5] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 6
+2019-09-23 08:39:10.138  INFO 3784 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:39:10.139  INFO 3784 --- [http-nio-7777-exec-4] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:39:10.139  INFO 3784 --- [http-nio-7777-exec-4] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:39:10.346  INFO 3784 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:39:10.350  INFO 3784 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:39:10.351 DEBUG 3784 --- [http-nio-7777-exec-4] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) <script><foreach collection='list' item='choice' separator=','>values (?,?,?,?,?,now(),?)</foreach></script> 
+2019-09-23 08:39:10.353 ERROR 3784 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : parsing excel error,catch:nested exception is org.apache.ibatis.binding.BindingException: Parameter 'choice' not found. Available parameters are [collection, list]
+2019-09-23 08:39:55.771  INFO 3784 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:39:55.771  INFO 3784 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-23 08:39:55.780  INFO 3784 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-23 08:39:58.728  INFO 9724 --- [main] com.yayo.MyBookApplication               : Starting MyBookApplication on Yayo with PID 9724 (F:\work\my-book\target\classes started by Admin in F:\work\my-book)
+2019-09-23 08:39:58.729 DEBUG 9724 --- [main] com.yayo.MyBookApplication               : Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+2019-09-23 08:39:58.729  INFO 9724 --- [main] com.yayo.MyBookApplication               : No active profile set, falling back to default profiles: default
+2019-09-23 08:39:59.366  INFO 9724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2019-09-23 08:39:59.380  INFO 9724 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-23 08:39:59.380  INFO 9724 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-23 08:39:59.520  INFO 9724 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-09-23 08:39:59.525  INFO 9724 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-23 08:39:59.525  INFO 9724 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 775 ms
+2019-09-23 08:39:59.755  INFO 9724 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:39:59.791  INFO 9724 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-23 08:39:59.889  INFO 9724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2019-09-23 08:39:59.891  INFO 9724 --- [main] com.yayo.MyBookApplication               : Started MyBookApplication in 1.367 seconds (JVM running for 1.934)
+2019-09-23 08:40:09.333  INFO 9724 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 08:40:09.334  INFO 9724 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-23 08:40:09.338  INFO 9724 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-09-23 08:40:09.346  INFO 9724 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:40:09.553  WARN 9724 --- [http-nio-7777-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [203] milliseconds.
+2019-09-23 08:40:11.048  INFO 9724 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/login
+2019-09-23 08:40:11.060  INFO 9724 --- [http-nio-7777-exec-3] com.yayo.sys.controller.LoginController  : fh58q2ea6thauof5ikg98fe2ciafh50r
+2019-09-23 08:40:11.068  INFO 9724 --- [http-nio-7777-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-23 08:40:11.244  INFO 9724 --- [http-nio-7777-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-23 08:40:11.249 DEBUG 9724 --- [http-nio-7777-exec-3] c.y.s.m.U.findByUserNamePassword         : ==>  Preparing: select * from user where username = ? and password = ? 
+2019-09-23 08:40:11.262 DEBUG 9724 --- [http-nio-7777-exec-3] c.y.s.m.U.findByUserNamePassword         : ==> Parameters: 15886223373(String), fh58q2ea6thauof5ikg98fe2ciafh50r(String)
+2019-09-23 08:40:11.275 DEBUG 9724 --- [http-nio-7777-exec-3] c.y.s.m.U.findByUserNamePassword         : <==      Total: 1
+2019-09-23 08:40:11.282  INFO 9724 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/welcome
+2019-09-23 08:40:11.433  INFO 9724 --- [http-nio-7777-exec-8] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:40:11.433  INFO 9724 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:40:11.433 ERROR 9724 --- [http-nio-7777-exec-8] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:40:11.433 ERROR 9724 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:40:13.765  INFO 9724 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : request.uri:/choice
+2019-09-23 08:40:13.837  INFO 9724 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/list
+2019-09-23 08:40:13.840 DEBUG 9724 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:40:13.840 DEBUG 9724 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:40:13.841 DEBUG 9724 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:40:13.858 DEBUG 9724 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==>  Preparing: select * from categories where categories_parent in ( ? , ? , ? , ? ) 
+2019-09-23 08:40:13.858 DEBUG 9724 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==> Parameters: 32(Integer), 120(Integer), 130(Integer), 171(Integer)
+2019-09-23 08:40:13.861 DEBUG 9724 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : <==      Total: 15
+2019-09-23 08:40:13.862 DEBUG 9724 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==>  Preparing: select count(choice_id) from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) 
+2019-09-23 08:40:13.863 DEBUG 9724 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer)
+2019-09-23 08:40:13.864 DEBUG 9724 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : <==      Total: 1
+2019-09-23 08:40:13.865 DEBUG 9724 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==>  Preparing: select * from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) limit ?,? 
+2019-09-23 08:40:13.866 DEBUG 9724 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer), 0(Integer), 10(Integer)
+2019-09-23 08:40:13.868 DEBUG 9724 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : <==      Total: 10
+2019-09-23 08:40:15.206  INFO 9724 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:40:15.280  INFO 9724 --- [http-nio-7777-exec-2] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:40:15.281 DEBUG 9724 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:40:15.281 DEBUG 9724 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:40:15.282 DEBUG 9724 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:40:16.839  INFO 9724 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:40:16.840 DEBUG 9724 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:40:16.840 DEBUG 9724 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 120(Integer)
+2019-09-23 08:40:16.841 DEBUG 9724 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 6
+2019-09-23 08:40:21.858  INFO 9724 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:40:21.859  INFO 9724 --- [http-nio-7777-exec-4] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:40:21.859  INFO 9724 --- [http-nio-7777-exec-4] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:40:22.069  INFO 9724 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:40:22.073  INFO 9724 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:40:22.074 DEBUG 9724 --- [http-nio-7777-exec-4] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) <script><foreach collection='list' item='choice' separator=','>values (?,?,?,?,?,now(),?)</foreach></script> 
+2019-09-23 08:40:22.075 ERROR 9724 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : parsing excel error,catch:nested exception is org.apache.ibatis.binding.BindingException: Parameter 'choice' not found. Available parameters are [collection, list]
+2019-09-23 08:43:31.757  INFO 9724 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:43:31.758  INFO 9724 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-23 08:43:31.763  INFO 9724 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-23 08:43:34.751  INFO 11568 --- [main] com.yayo.MyBookApplication               : Starting MyBookApplication on Yayo with PID 11568 (F:\work\my-book\target\classes started by Admin in F:\work\my-book)
+2019-09-23 08:43:34.753 DEBUG 11568 --- [main] com.yayo.MyBookApplication               : Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+2019-09-23 08:43:34.753  INFO 11568 --- [main] com.yayo.MyBookApplication               : No active profile set, falling back to default profiles: default
+2019-09-23 08:43:35.397  INFO 11568 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2019-09-23 08:43:35.411  INFO 11568 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-23 08:43:35.411  INFO 11568 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-23 08:43:35.549  INFO 11568 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-09-23 08:43:35.554  INFO 11568 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-23 08:43:35.554  INFO 11568 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 778 ms
+2019-09-23 08:43:35.788  INFO 11568 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:43:35.824  INFO 11568 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-23 08:43:35.920  INFO 11568 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2019-09-23 08:43:35.923  INFO 11568 --- [main] com.yayo.MyBookApplication               : Started MyBookApplication in 1.376 seconds (JVM running for 1.957)
+2019-09-23 08:43:45.254  INFO 11568 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 08:43:45.255  INFO 11568 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-23 08:43:45.259  INFO 11568 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-09-23 08:43:45.266  INFO 11568 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:43:45.470  WARN 11568 --- [http-nio-7777-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [202] milliseconds.
+2019-09-23 08:43:46.956  INFO 11568 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/login
+2019-09-23 08:43:46.968  INFO 11568 --- [http-nio-7777-exec-5] com.yayo.sys.controller.LoginController  : fh58q2ea6thauof5ikg98fe2ciafh50r
+2019-09-23 08:43:46.977  INFO 11568 --- [http-nio-7777-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-23 08:43:47.145  INFO 11568 --- [http-nio-7777-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-23 08:43:47.150 DEBUG 11568 --- [http-nio-7777-exec-5] c.y.s.m.U.findByUserNamePassword         : ==>  Preparing: select * from user where username = ? and password = ? 
+2019-09-23 08:43:47.162 DEBUG 11568 --- [http-nio-7777-exec-5] c.y.s.m.U.findByUserNamePassword         : ==> Parameters: 15886223373(String), fh58q2ea6thauof5ikg98fe2ciafh50r(String)
+2019-09-23 08:43:47.175 DEBUG 11568 --- [http-nio-7777-exec-5] c.y.s.m.U.findByUserNamePassword         : <==      Total: 1
+2019-09-23 08:43:47.182  INFO 11568 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : request.uri:/welcome
+2019-09-23 08:43:47.332  INFO 11568 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:43:47.332  INFO 11568 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:43:47.332 ERROR 11568 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:43:47.332 ERROR 11568 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:43:47.428  INFO 11568 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:43:47.428 ERROR 11568 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:43:47.434  INFO 11568 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:43:47.434 ERROR 11568 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:43:50.536  INFO 11568 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/choice
+2019-09-23 08:43:50.616  INFO 11568 --- [http-nio-7777-exec-6] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/list
+2019-09-23 08:43:50.619 DEBUG 11568 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:43:50.619 DEBUG 11568 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:43:50.620 DEBUG 11568 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:43:50.637 DEBUG 11568 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentIds       : ==>  Preparing: select * from categories where categories_parent in ( ? , ? , ? , ? ) 
+2019-09-23 08:43:50.637 DEBUG 11568 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentIds       : ==> Parameters: 32(Integer), 120(Integer), 130(Integer), 171(Integer)
+2019-09-23 08:43:50.640 DEBUG 11568 --- [http-nio-7777-exec-6] c.y.s.m.C.getCategoriesByParentIds       : <==      Total: 15
+2019-09-23 08:43:50.641 DEBUG 11568 --- [http-nio-7777-exec-6] com.yayo.sys.mapper.ChoiceMapper.count   : ==>  Preparing: select count(choice_id) from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) 
+2019-09-23 08:43:50.642 DEBUG 11568 --- [http-nio-7777-exec-6] com.yayo.sys.mapper.ChoiceMapper.count   : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer)
+2019-09-23 08:43:50.643 DEBUG 11568 --- [http-nio-7777-exec-6] com.yayo.sys.mapper.ChoiceMapper.count   : <==      Total: 1
+2019-09-23 08:43:50.644 DEBUG 11568 --- [http-nio-7777-exec-6] com.yayo.sys.mapper.ChoiceMapper.list    : ==>  Preparing: select * from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) limit ?,? 
+2019-09-23 08:43:50.644 DEBUG 11568 --- [http-nio-7777-exec-6] com.yayo.sys.mapper.ChoiceMapper.list    : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer), 0(Integer), 10(Integer)
+2019-09-23 08:43:50.646 DEBUG 11568 --- [http-nio-7777-exec-6] com.yayo.sys.mapper.ChoiceMapper.list    : <==      Total: 10
+2019-09-23 08:43:51.919  INFO 11568 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:43:51.997  INFO 11568 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:43:51.998 DEBUG 11568 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:43:51.998 DEBUG 11568 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:43:52.000 DEBUG 11568 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:43:53.050  INFO 11568 --- [http-nio-7777-exec-7] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:43:53.051 DEBUG 11568 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:43:53.051 DEBUG 11568 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 120(Integer)
+2019-09-23 08:43:53.052 DEBUG 11568 --- [http-nio-7777-exec-7] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 6
+2019-09-23 08:43:58.740  INFO 11568 --- [http-nio-7777-exec-8] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:43:58.741  INFO 11568 --- [http-nio-7777-exec-8] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:43:58.741  INFO 11568 --- [http-nio-7777-exec-8] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:43:58.947  INFO 11568 --- [http-nio-7777-exec-8] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:43:58.951  INFO 11568 --- [http-nio-7777-exec-8] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:43:58.952 DEBUG 11568 --- [http-nio-7777-exec-8] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) <script><foreach collection='list' item='choice' index='index' separator=','>values (?,?,?,?,?,now(),?)</foreach></script> 
+2019-09-23 08:43:58.954 ERROR 11568 --- [http-nio-7777-exec-8] c.y.sys.service.impl.ChoiceServiceImpl   : parsing excel error,catch:nested exception is org.apache.ibatis.binding.BindingException: Parameter 'choice' not found. Available parameters are [collection, list]
+2019-09-23 08:46:10.144  INFO 11568 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:46:10.145  INFO 11568 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-23 08:46:10.153  INFO 11568 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-23 08:46:13.184  INFO 6764 --- [main] com.yayo.MyBookApplication               : Starting MyBookApplication on Yayo with PID 6764 (F:\work\my-book\target\classes started by Admin in F:\work\my-book)
+2019-09-23 08:46:13.186 DEBUG 6764 --- [main] com.yayo.MyBookApplication               : Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+2019-09-23 08:46:13.186  INFO 6764 --- [main] com.yayo.MyBookApplication               : No active profile set, falling back to default profiles: default
+2019-09-23 08:46:13.819  INFO 6764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2019-09-23 08:46:13.833  INFO 6764 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-23 08:46:13.833  INFO 6764 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-23 08:46:13.972  INFO 6764 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-09-23 08:46:13.977  INFO 6764 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-23 08:46:13.978  INFO 6764 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 771 ms
+2019-09-23 08:46:14.208  INFO 6764 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:46:14.243  INFO 6764 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-23 08:46:14.342  INFO 6764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2019-09-23 08:46:14.344  INFO 6764 --- [main] com.yayo.MyBookApplication               : Started MyBookApplication in 1.36 seconds (JVM running for 1.97)
+2019-09-23 08:46:18.428  INFO 6764 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 08:46:18.429  INFO 6764 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-23 08:46:18.433  INFO 6764 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-09-23 08:46:18.441  INFO 6764 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:46:18.645  WARN 6764 --- [http-nio-7777-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [200] milliseconds.
+2019-09-23 08:46:19.973  INFO 6764 --- [http-nio-7777-exec-2] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/login
+2019-09-23 08:46:19.985  INFO 6764 --- [http-nio-7777-exec-2] com.yayo.sys.controller.LoginController  : fh58q2ea6thauof5ikg98fe2ciafh50r
+2019-09-23 08:46:19.993  INFO 6764 --- [http-nio-7777-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-23 08:46:20.165  INFO 6764 --- [http-nio-7777-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-23 08:46:20.170 DEBUG 6764 --- [http-nio-7777-exec-2] c.y.s.m.U.findByUserNamePassword         : ==>  Preparing: select * from user where username = ? and password = ? 
+2019-09-23 08:46:20.183 DEBUG 6764 --- [http-nio-7777-exec-2] c.y.s.m.U.findByUserNamePassword         : ==> Parameters: 15886223373(String), fh58q2ea6thauof5ikg98fe2ciafh50r(String)
+2019-09-23 08:46:20.196 DEBUG 6764 --- [http-nio-7777-exec-2] c.y.s.m.U.findByUserNamePassword         : <==      Total: 1
+2019-09-23 08:46:20.202  INFO 6764 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/welcome
+2019-09-23 08:46:20.362  INFO 6764 --- [http-nio-7777-exec-8] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:46:20.362  INFO 6764 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:46:20.362 ERROR 6764 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:46:20.362 ERROR 6764 --- [http-nio-7777-exec-8] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:46:23.130  INFO 6764 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : request.uri:/choice
+2019-09-23 08:46:23.215  INFO 6764 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/list
+2019-09-23 08:46:23.218 DEBUG 6764 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:46:23.218 DEBUG 6764 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:46:23.220 DEBUG 6764 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:46:23.237 DEBUG 6764 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==>  Preparing: select * from categories where categories_parent in ( ? , ? , ? , ? ) 
+2019-09-23 08:46:23.237 DEBUG 6764 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==> Parameters: 32(Integer), 120(Integer), 130(Integer), 171(Integer)
+2019-09-23 08:46:23.239 DEBUG 6764 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : <==      Total: 15
+2019-09-23 08:46:23.241 DEBUG 6764 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==>  Preparing: select count(choice_id) from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) 
+2019-09-23 08:46:23.242 DEBUG 6764 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer)
+2019-09-23 08:46:23.243 DEBUG 6764 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : <==      Total: 1
+2019-09-23 08:46:23.244 DEBUG 6764 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==>  Preparing: select * from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) limit ?,? 
+2019-09-23 08:46:23.244 DEBUG 6764 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer), 0(Integer), 10(Integer)
+2019-09-23 08:46:23.246 DEBUG 6764 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : <==      Total: 10
+2019-09-23 08:46:25.508  INFO 6764 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:46:25.596  INFO 6764 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:46:25.597 DEBUG 6764 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:46:25.597 DEBUG 6764 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:46:25.598 DEBUG 6764 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:46:26.550  INFO 6764 --- [http-nio-7777-exec-2] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:46:26.553 DEBUG 6764 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:46:26.554 DEBUG 6764 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 130(Integer)
+2019-09-23 08:46:26.559 DEBUG 6764 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:46:32.467  INFO 6764 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:46:32.468  INFO 6764 --- [http-nio-7777-exec-4] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:46:32.468  INFO 6764 --- [http-nio-7777-exec-4] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:46:32.708  INFO 6764 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:46:32.712  INFO 6764 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:46:32.713 DEBUG 6764 --- [http-nio-7777-exec-4] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values<script><foreach collection='list' item='c' separator=','>(?,?,?,?,?,now(),?)</foreach></script> 
+2019-09-23 08:46:32.715 ERROR 6764 --- [http-nio-7777-exec-4] c.y.sys.service.impl.ChoiceServiceImpl   : parsing excel error,catch:nested exception is org.apache.ibatis.binding.BindingException: Parameter 'c' not found. Available parameters are [collection, list]
+2019-09-23 08:47:02.134  INFO 6764 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:47:02.135  INFO 6764 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-23 08:47:02.144  INFO 6764 --- [Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-23 08:47:05.138  INFO 7072 --- [main] com.yayo.MyBookApplication               : Starting MyBookApplication on Yayo with PID 7072 (F:\work\my-book\target\classes started by Admin in F:\work\my-book)
+2019-09-23 08:47:05.139 DEBUG 7072 --- [main] com.yayo.MyBookApplication               : Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+2019-09-23 08:47:05.140  INFO 7072 --- [main] com.yayo.MyBookApplication               : No active profile set, falling back to default profiles: default
+2019-09-23 08:47:05.781  INFO 7072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2019-09-23 08:47:05.794  INFO 7072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-23 08:47:05.794  INFO 7072 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-23 08:47:05.931  INFO 7072 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-09-23 08:47:05.936  INFO 7072 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-23 08:47:05.936  INFO 7072 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 775 ms
+2019-09-23 08:47:06.172  INFO 7072 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 08:47:06.209  INFO 7072 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-23 08:47:06.306  INFO 7072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2019-09-23 08:47:06.308  INFO 7072 --- [main] com.yayo.MyBookApplication               : Started MyBookApplication in 1.374 seconds (JVM running for 1.951)
+2019-09-23 08:47:11.465  INFO 7072 --- [http-nio-7777-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 08:47:11.467  INFO 7072 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-23 08:47:11.471  INFO 7072 --- [http-nio-7777-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-09-23 08:47:11.479  INFO 7072 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:47:11.683  WARN 7072 --- [http-nio-7777-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [200] milliseconds.
+2019-09-23 08:47:12.749  INFO 7072 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/login
+2019-09-23 08:47:12.761  INFO 7072 --- [http-nio-7777-exec-3] com.yayo.sys.controller.LoginController  : fh58q2ea6thauof5ikg98fe2ciafh50r
+2019-09-23 08:47:12.768  INFO 7072 --- [http-nio-7777-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-23 08:47:12.942  INFO 7072 --- [http-nio-7777-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-23 08:47:12.947 DEBUG 7072 --- [http-nio-7777-exec-3] c.y.s.m.U.findByUserNamePassword         : ==>  Preparing: select * from user where username = ? and password = ? 
+2019-09-23 08:47:12.961 DEBUG 7072 --- [http-nio-7777-exec-3] c.y.s.m.U.findByUserNamePassword         : ==> Parameters: 15886223373(String), fh58q2ea6thauof5ikg98fe2ciafh50r(String)
+2019-09-23 08:47:12.973 DEBUG 7072 --- [http-nio-7777-exec-3] c.y.s.m.U.findByUserNamePassword         : <==      Total: 1
+2019-09-23 08:47:12.980  INFO 7072 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/welcome
+2019-09-23 08:47:13.129  INFO 7072 --- [http-nio-7777-exec-7] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:47:13.129  INFO 7072 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : request.uri:/error
+2019-09-23 08:47:13.129 ERROR 7072 --- [http-nio-7777-exec-7] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:47:13.129 ERROR 7072 --- [http-nio-7777-exec-4] com.yayo.base.component.MyInterceptor    : catch.error,request.uri:/error,userSession:User(userId=1, userNickname=李狗蛋, username=15886223373, password=fh58q2ea6thauof5ikg98fe2ciafh50r, userIdCard=22028219881224563X, userType=0, userJson=null, userLastLogin=null, createdAt=Wed Sep 11 00:00:00 CST 2019, updatedAt=null)
+2019-09-23 08:47:15.763  INFO 7072 --- [http-nio-7777-exec-9] com.yayo.base.component.MyInterceptor    : request.uri:/choice
+2019-09-23 08:47:15.837  INFO 7072 --- [http-nio-7777-exec-10] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/list
+2019-09-23 08:47:15.840 DEBUG 7072 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:47:15.840 DEBUG 7072 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:47:15.841 DEBUG 7072 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:47:15.858 DEBUG 7072 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==>  Preparing: select * from categories where categories_parent in ( ? , ? , ? , ? ) 
+2019-09-23 08:47:15.858 DEBUG 7072 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : ==> Parameters: 32(Integer), 120(Integer), 130(Integer), 171(Integer)
+2019-09-23 08:47:15.861 DEBUG 7072 --- [http-nio-7777-exec-10] c.y.s.m.C.getCategoriesByParentIds       : <==      Total: 15
+2019-09-23 08:47:15.862 DEBUG 7072 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==>  Preparing: select count(choice_id) from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) 
+2019-09-23 08:47:15.863 DEBUG 7072 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer)
+2019-09-23 08:47:15.864 DEBUG 7072 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.count   : <==      Total: 1
+2019-09-23 08:47:15.865 DEBUG 7072 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==>  Preparing: select * from choice where categories_id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) limit ?,? 
+2019-09-23 08:47:15.865 DEBUG 7072 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : ==> Parameters: 88(Integer), 107(Integer), 108(Integer), 109(Integer), 110(Integer), 121(Integer), 122(Integer), 123(Integer), 124(Integer), 125(Integer), 129(Integer), 131(Integer), 132(Integer), 133(Integer), 134(Integer), 0(Integer), 10(Integer)
+2019-09-23 08:47:15.867 DEBUG 7072 --- [http-nio-7777-exec-10] com.yayo.sys.mapper.ChoiceMapper.list    : <==      Total: 10
+2019-09-23 08:47:17.680  INFO 7072 --- [http-nio-7777-exec-1] com.yayo.base.component.MyInterceptor    : request.uri:/choice_create
+2019-09-23 08:47:17.751  INFO 7072 --- [http-nio-7777-exec-2] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:47:17.751 DEBUG 7072 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:47:17.752 DEBUG 7072 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 0(Integer)
+2019-09-23 08:47:17.753 DEBUG 7072 --- [http-nio-7777-exec-2] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:47:19.032  INFO 7072 --- [http-nio-7777-exec-3] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/categories/list
+2019-09-23 08:47:19.033 DEBUG 7072 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==>  Preparing: select * from categories where categories_parent = ? 
+2019-09-23 08:47:19.033 DEBUG 7072 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : ==> Parameters: 130(Integer)
+2019-09-23 08:47:19.034 DEBUG 7072 --- [http-nio-7777-exec-3] c.y.s.m.C.getCategoriesByParentId        : <==      Total: 4
+2019-09-23 08:47:28.246  INFO 7072 --- [http-nio-7777-exec-5] com.yayo.base.component.MyInterceptor    : request.uri:/api/admin/choice/create_batch
+2019-09-23 08:47:28.247  INFO 7072 --- [http-nio-7777-exec-5] com.yayo.base.component.UploadUtil       : 上传的文件名为：新建 Microsoft Office Excel 工作表.xlsx
+2019-09-23 08:47:28.247  INFO 7072 --- [http-nio-7777-exec-5] com.yayo.base.component.UploadUtil       : 上传的后缀名为：.xlsx
+2019-09-23 08:47:28.452  INFO 7072 --- [http-nio-7777-exec-5] c.y.sys.service.impl.ChoiceServiceImpl   : Excel:{successCount=2, list=[ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是一个问题, choiceAnswer=[{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}], choiceType=1, choiceTrue=A, createdAt=null, createdBy=null, answerMap={A=答案A, B=答案B, C=答案C, D=答案D}), ChoiceUpdateDTO(choiceId=null, categoriesId=108, choiceQuestion=我是第二个问题, choiceAnswer=[{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}], choiceType=2, choiceTrue=B,D, createdAt=null, createdBy=null, answerMap={A=AAAAAAASDFASDFASDF, B=BBBBBBBB, C=CCCCCCCWERTRET, D=DDDDDDD})], errorCount=0, errorMsg=}
+2019-09-23 08:47:28.456  INFO 7072 --- [http-nio-7777-exec-5] c.y.sys.service.impl.ChoiceServiceImpl   : 开始批量更新
+2019-09-23 08:47:28.458 DEBUG 7072 --- [http-nio-7777-exec-5] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==>  Preparing: insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) values (?,?,?,?,?,now(),?) , (?,?,?,?,?,now(),?) 
+2019-09-23 08:47:28.458 DEBUG 7072 --- [http-nio-7777-exec-5] c.y.sys.mapper.ChoiceMapper.insertBatch  : ==> Parameters: 108(Integer), 我是一个问题(String), 1(Integer), [{"answer":"答案A","num":"A"}, {"answer":"答案B","num":"B"}, {"answer":"答案C","num":"C"}, {"answer":"答案D","num":"D"}](String), A(String), null, 108(Integer), 我是第二个问题(String), 2(Integer), [{"answer":"AAAAAAASDFASDFASDF","num":"A"}, {"answer":"BBBBBBBB","num":"B"}, {"answer":"CCCCCCCWERTRET","num":"C"}, {"answer":"DDDDDDD","num":"D"}](String), B,D(String), null
+2019-09-23 08:47:28.490 DEBUG 7072 --- [http-nio-7777-exec-5] c.y.sys.mapper.ChoiceMapper.insertBatch  : <==    Updates: 2
+2019-09-23 08:47:28.490  INFO 7072 --- [http-nio-7777-exec-5] c.y.sys.service.impl.ChoiceServiceImpl   : 批量更新结束
