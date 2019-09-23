@@ -161,10 +161,7 @@
             <li class="dropdown visible-md visible-lg">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="user-avatar" src="<%= path%>/assets/img/avatar.jpg" alt="user-mail">${user.userNickname}</a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-menu-header">
-                        <strong>Account</strong>
-                    </li>
-                    <li><a href="page-profile.html"><i class="fa fa-user"></i> Profile</a></li>
+                    <li><a href="/user_info"><i class="fa fa-user"></i> 个人资料</a></li>
                     <li><a href="page-login.html"><i class="fa fa-wrench"></i> Settings</a></li>
                     <li><a href="page-invoice.html"><i class="fa fa-usd"></i> Payments <span class="label label-default">10</span></a></li>
                     <li><a href="gallery.html"><i class="fa fa-file"></i> File <span class="label label-primary">27</span></a></li>
@@ -219,13 +216,13 @@
                                 <li><a href="form-x-editable.html"><i class="fa fa-pencil"></i><span class="text"> X-editable</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="/user"><i class="fa fa-table"></i><span class="text">用户管理</span></a></li>
+                        <li><a href="/user"><i class="fa fa-table"></i><span class="text"> 用户管理</span></a></li>
                         <li>
-                            <a href="#"><i class="fa fa-signal"></i><span class="text">习题管理</span> <span class="fa fa-angle-down pull-right"></span></a>
+                            <a href="#"><i class="fa fa-signal"></i><span class="text"> 习题管理</span> <span class="fa fa-angle-down pull-right"></span></a>
                             <ul class="nav sub">
-                                <li><a href="/categories"><i class="fa fa-random"></i><span class="text">类目管理</span></a></li>
-                                <li><a href="/choice"><i class="fa fa-retweet"></i><span class="text">题库管理</span></a></li>
-                                <li><a href="/paper"><i class="fa fa-bar-chart-o"></i><span class="text">试卷管理</span></a></li>
+                                <li><a href="/categories"><i class="fa fa-random"></i><span class="text"> 类目管理</span></a></li>
+                                <li><a href="/choice"><i class="fa fa-retweet"></i><span class="text"> 题库管理</span></a></li>
+                                <li><a href="/paper"><i class="fa fa-bar-chart-o"></i><span class="text"> 试卷管理</span></a></li>
                             </ul>
                         </li>
                         <li>
@@ -238,7 +235,7 @@
                                 <li><a href="ui-buttons.html"><i class="fa fa-th"></i><span class="text"> Buttons</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="widgets.html"><i class="fa fa-life-bouy"></i><span class="text"> Widgets</span></a></li>
+                        <li><a href="widgets.html"><i class="fa fa-life-bouy"></i><span class="text"> 图书管理</span></a></li>
                         <li><a href="typography.html"><i class="fa fa-font"></i><span class="text"> Typography</span></a></li>
                         <li>
                             <a href="#"><i class="fa fa-bolt"></i><span class="text"> Icons</span> <span class="fa fa-angle-down pull-right"></span></a>
@@ -247,7 +244,7 @@
                                 <li><a href="icons-climacons.html"><i class="fa fa-meh-o"></i><span class="text"> Climacons</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="gallery.html"><i class="fa fa-picture-o"></i><span class="text"> Gallery</span></a></li>
+                        <li><a href="/templates"><i class="fa fa-picture-o"></i><span class="text">模版下载</span></a></li>
                         <li><a href="calendar.html"><i class="fa fa-calendar"></i><span class="text"> Calendar</span></a></li>
                     </ul>
                 </div>

@@ -49,4 +49,14 @@ public class GoPageController {
     public String choiceUpdate(@PathVariable Long choiceId){
         return "/choice_update";
     }
+
+    @RequestMapping(value = "/templates" , method = RequestMethod.GET)
+    public String templates(){
+        return "/templates";
+    }
+
+    @RequestMapping(value="/user_info" , method = RequestMethod.GET)
+    public String userInfo(){
+        return "/user_info";
+    }
 }

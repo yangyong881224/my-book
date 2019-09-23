@@ -12,6 +12,7 @@ public class User implements Serializable {
     private String userNickname;
     private String username;
     private String password;
+    private String userEmaill;
     private String userIdCard;
     private Integer userType;
     private String userJson;

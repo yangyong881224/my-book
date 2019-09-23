@@ -124,45 +124,28 @@ public class ChoiceServiceImpl implements ChoiceService {
     @Override
     public Map<String, String> uploadAndRead(MultipartFile file) {
         //保存上传文件
-        Map<String,String> result =  UploadUtil.upload(file,"F:/my-book/choice/");
+        Map<String,String> result =  UploadUtil.upload(file,"D:/my-book/choice/");
         //读取上传文件
         if("0".equals(result.get("code"))){
             String path = result.get("path");
-            int rowNo = 0;
-            try{
-                File readFile = new File(result.get("path"));
-                InputStream is = new FileInputStream(readFile);
-                XSSFWorkbook wb = new XSSFWorkbook (is);
-                XSSFSheet sheet = wb.getSheetAt(0);
-                //行的索引数，从0开始，rowNo + 1 就是总行数
-                rowNo = sheet.getLastRowNum();
-                try {
-                    //分析Excel
-                    Map<String,Object> excelResult = ReadChoice.readExcel(sheet);
-                    log.info("Excel:{}",excelResult);
-                    if(!"0".equals(excelResult.get("successCount"))){
-                        log.info("开始批量更新");
-                        //批量更新
-                        List<ChoiceUpdateDTO> list = (List<ChoiceUpdateDTO>) excelResult.get("list");
-                        boolean insertResult = choiceMapper.insertBatch(list);
-                        log.info("批量更新结束");
-                    }
-                } catch (Exception e) {
-                    log.error("parsing excel error,catch:{}",e.getMessage());
-                    e.printStackTrace();
+            try {
+                //分析Excel
+                Map<String,Object> excelResult = ReadChoice.readExcel(path);
+                log.info("Excel:{}",excelResult);
+                if(!"0".equals(excelResult.get("successCount"))){
+                    log.info("开始批量更新");
+                    //批量更新
+                    List<ChoiceUpdateDTO> list = (List<ChoiceUpdateDTO>) excelResult.get("list");
+                    boolean insertResult = choiceMapper.insertBatch(list);
+                    log.info("批量更新结束");
                 }
-            } catch (Exception e) {
-                log.error("It is a bad Excel Url, catch:{}",e.getMessage());
+            } catch (IOException e) {
+                log.error("读取路径'{}'失败,catch:{}",path,e.getMessage());
                 e.printStackTrace();
             }
+
         }
         return result;
-    }
-
-
-    public static void main(String[] args) {
-        ChoiceServiceImpl choice = new ChoiceServiceImpl();
-
     }
 
 
