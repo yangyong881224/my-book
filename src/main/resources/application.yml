@@ -13,14 +13,13 @@ spring:
     view:
       prefix: /WEB-INF/
       suffix: .jsp
-    static-path-pattern: /templates/**
   servlet:
     multipart:
       enabled: true
       max-file-size: 10MB
       max-request-size: 10MB
   resources:
-    static-locations: file:D:/my-book/upload/choice/,file:./templates/
+    static-locations: file:F:/my-book/upload/choice/
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
