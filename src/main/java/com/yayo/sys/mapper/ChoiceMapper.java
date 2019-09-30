@@ -42,4 +42,23 @@ public interface ChoiceMapper {
             "(#{c.categoriesId},#{c.choiceQuestion},#{c.choiceType},#{c.choiceAnswer},#{c.choiceTrue},now(),#{c.createdBy})" +
             "</foreach></script>")
     boolean insertBatch(List<ChoiceUpdateDTO> list);
+
+
+    @Select("<script>select count(choice_id) from choice where " +
+            "categories_id in <foreach collection='categoriesList' item='categories' open='(' separator=',' close=')'>#{categories.categoriesId}</foreach> " +
+            "<if test='choiceIds!=null'>and choice_id not in <foreach collection='choiceIds' item='choiceId' open='(' separator=',' close=')'>#{choiceId}</foreach> </if>" +
+            "</script>")
+    Integer countInPaper(Map<String, Object> params);
+
+
+    @Select("<script>select * from choice where " +
+            "categories_id in <foreach collection='categoriesList' item='categories' open='(' separator=',' close=')'>#{categories.categoriesId}</foreach> " +
+            "<if test='choiceIds!=null'>and choice_id not in <foreach collection='choiceIds' item='choiceId' open='(' separator=',' close=')'>#{choiceId}</foreach></if> " +
+            "limit #{offset},#{limit}</script>")
+    List<Choice> listInPaper(Map<String, Object> params);
+
+    @Select("<script>select * from choice where " +
+            "choice_id in <foreach collection='list' item='choiceId' open='(' separator=',' close=')'> #{choiceId}</foreach>" +
+            "</script>")
+    List<Choice> findByIds(List<Long> list);
 }

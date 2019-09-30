@@ -148,5 +148,62 @@ public class ChoiceServiceImpl implements ChoiceService {
         return result;
     }
 
+    @Override
+    public Paging<ChoiceDTO> paperChoiceList(Map<String, Object> params) {
+        //查询一级类目
+        List<Categories> parents = categoriesMapper.getCategoriesByParentId(0);
+        //创建组合对象集
+        List<ChoiceDTO> choiceDTOList = new ArrayList<>();
+        Integer total = 0;
+        //判断类目是否为空
+        if(!parents.isEmpty()){
+            //查询二级类目
+            List<Categories> categoriesList = categoriesMapper.getCategoriesByParentIds(parents);
+            //获取页数起止
+            PageInfo pageInfo = new PageInfo(Integer.parseInt(params.get("pageNo").toString()),Integer.parseInt(params.get("pageSize").toString()));
+            params.put("limit",pageInfo.getLimit());
+            params.put("offset",pageInfo.getOffset());
+            params.put("categoriesList",categoriesList);
+            params.put("choiceIds",params.get("choiceIds"));
+            //查询总条数
+            total = choiceMapper.countInPaper(params);
+            if(total != 0){
+                //根据二级类目查询选择题
+                List<Choice> choiceList = choiceMapper.listInPaper(params);
 
+                //开始拼装
+                for(Choice choice : choiceList){
+                    //组合对象
+                    ChoiceDTO choiceDTO = new ChoiceDTO();
+                    choiceDTO.setChoice(choice);
+                    //二级类目便利
+                    for(Categories categories : categoriesList){
+                        //二级类目与选择题匹配
+                        if(choice.getCategoriesId().equals(categories.getCategoriesId())){
+                            choiceDTO.setCategories2(categories);
+                            //一级类目便利
+                            for(Categories parent : parents){
+                                //一级类目与二级类目匹配
+                                if(categories.getCategoriesParent().equals(parent.getCategoriesId())){
+                                    choiceDTO.setCategories1(parent);
+                                    //如果匹配上，跳出当前循环
+                                    break;
+                                }
+                            }
+                            //如果匹配上，跳出当前循环
+                            break;
+                        }
+                    }
+                    choiceDTOList.add(choiceDTO);
+                }
+            }
+        }
+        Paging paging = new Paging(total,choiceDTOList);
+        return paging;
+    }
+
+    @Override
+    public List<Choice> getChoiceByIds(List<Long> choiceIdList) {
+        return choiceMapper.findByIds(choiceIdList);
+    }
 }

@@ -6,6 +6,7 @@ import com.yayo.sys.dto.ChoiceDTO;
 import com.yayo.sys.dto.ChoiceUpdateDTO;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,4 +26,8 @@ public interface ChoiceService {
     boolean update(Choice choice);
 
     Map<String, String> uploadAndRead(MultipartFile file);
+
+    Paging<ChoiceDTO> paperChoiceList(Map<String, Object> params);
+
+    List<Choice> getChoiceByIds(List<Long> choiceIdList);
 }

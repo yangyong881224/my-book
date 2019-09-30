@@ -59,4 +59,9 @@ public class GoPageController {
     public String userInfo(){
         return "/user_info";
     }
+
+    @RequestMapping(value = "/{paperId}/paper_add_choice")
+    public String paperAddChoice(@PathVariable Integer paperId){
+        return "/paper_add_choice";
+    }
 }

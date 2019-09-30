@@ -1,8 +1,12 @@
 package com.yayo.sys.bean;
 
 import lombok.Data;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Author: Yayo
@@ -17,4 +21,25 @@ public class Paper implements Serializable {
     private String paperName;
     private Integer paperFlag;
     private String choiceIds;
+
+    private List<Long> choiceIdList;
+
+    public void setChoiceIds(String choiceIds){
+        if(StringUtils.isNotBlank(choiceIds)){
+            this.choiceIds = choiceIds;
+            String[] choiceIdArr = choiceIds.split(",");
+            choiceIdList = new ArrayList<>();
+            for(String id : choiceIdArr){
+                if(!"".equals(id.trim()))
+                    choiceIdList.add(Long.parseLong(id.trim()));
+            }
+        }
+    }
+
+    public void setChoiceIdList(List<Long> choiceIdList){
+        this.choiceIdList = choiceIdList;
+        if(choiceIdList != null){
+            this.choiceIds =choiceIdList.toString().replace("[","").replace("]","").trim();
+        }
+    }
 }

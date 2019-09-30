@@ -8,7 +8,7 @@
     	<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>用户管理</title>
+	    <title>添加习题</title>
 
 		<!-- Favicon and touch icons -->
 		<link rel="shortcut icon" href="<%= path%>/assets/ico/favicon.ico" type="image/x-icon" />
@@ -268,104 +268,81 @@
 						
 		<!-- start: Content -->
 		<div class="main sidebar-minified">
-		
 			<div class="row">
-				<div class="col-lg-12">
+
+				<div class="col-lg-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>习题管理</strong></h2>
+							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>试卷</strong></h2>
 							<div class="panel-actions">
-								<button type="button" class="btn btn-primary btn-setting" onclick="showConfirm()"><i class="fa fa-plus"></i>新建</button>
+								<a href="javascript:void(0)"><button type="button" class="btn btn-primary" onclick="deleteChoice()">删除选中</button></a>
 							</div>
 						</div>
 						<div class="panel-body">
-							<table class="table table-striped table-bordered bootstrap-datatable datatable">
+							<table class="table table-bordered">
 								<thead>
-									  <tr>
-										 <th style="width:5%">编号</th>
-										 <th>标题</th>
-										 <th style="width:20%">操作</th>
-									  </tr>
-								  </thead>   
-								  <tbody id="tbody">
+								<tr>
+									<th style="width:5%">全选<input type="checkbox" name="allcheckDel" onclick="allCheckDel()"></th>
+									<th style="width:5%">编号</th>
+									<th>问题</th>
+								</tr>
+								</thead>
+								<tbody id="myChoice">
 
-								  </tbody>
-							 </table>  
-							 <ul class="pagination"  style="float:right;margin-right: 50px">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div><!--/col-->
+
+				<div class="col-lg-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>题库</strong></h2>
+							<div class="panel-actions">
+								<a href="javascript:void(0)"><button type="button" class="btn btn-primary" onclick="addChoice()">保存选中</button></a>
+							</div>
+						</div>
+						<div class="panel-body">
+							<table class="table table-bordered">
+								<thead>
+								<tr>
+									<th style="width:5%">全选<input type="checkbox" name="allcheck" onclick="allCheck()"></th>
+									<th style="width:5%">编号</th>
+									<th>一级类目</th>
+									<th>二级类目</th>
+									<th>问题</th>
+								</tr>
+								</thead>
+								<tbody id="tbody">
+
+								</tbody>
+							</table>
+							<ul class="pagination" style="float:right;margin-right: 50px">
 								<li><a href="javascript:void(0)" onclick="prew()">上一页</a></li>
 								<li><a href="javascript:void(0)" onclick="next()">下一页</a></li>
-							  </ul>
+							</ul>
 						</div>
 					</div>
 				</div><!--/col-->
 			</div><!--/row-->
-   
 		</div>
 		<!-- end: Content -->
 	</div><!--/container-->
 	</div>
 	
-	<div class="modal fade" id="changeModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">修改</h4>
-					<input type="hidden" id="paperId" value="" readonly>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-striped table-condensed table-hover">
-						<tr>
-							<td>标题：</td>
-							<td><input type="text" id="paperName1"></td>
-						</tr>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updatePaper()">保存</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<div class="modal fade" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">新建</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-striped table-condensed table-hover">
-						<tr>
-							<td>标题：</td>
-							<td><input type="text" id="paperName"></td>
-						</tr>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="createPaper()">保存</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
 	<div class="modal fade" id="deleteModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">警告</h4>
-					<input type="hidden" id="paperId2" readonly>
+					<h4 class="modal-title">提示</h4>
 				</div>
 				<div class="modal-body">
-					<table class="table table-bordered table-striped table-condensed table-hover">
-						删除试卷将无法恢复，是否确认删除？
-					</table>
+					<span id="msg"></span>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="deletePaper()">确认</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
@@ -423,6 +400,7 @@
 		var pageSize = 10;
 		var total = 0;
 		paging(pageNo,pageSize);
+		choiceIdsInPaper();
 
 		function prew(){
 			if(total != 0 && pageNo > 1){
@@ -441,12 +419,14 @@
 
 
 		function paging(pageNo,pageSize){
+			var paperId = ${paperId}
 			$.ajax({
 				type:"GET",
-				url:"/api/admin/paper/list",
+				url:"/api/admin/paper/paper_choice_list",
 				data:{
 					pageNo:pageNo,
-					pageSize:pageSize
+					pageSize:pageSize,
+					paperId:paperId
 				},
 				dataType:"json",
 				contentType:"application/x-www-form-urlencoded",
@@ -455,19 +435,19 @@
 					if(data.total != 0 ){
 						total = data.total;
 						var html = "";
-						data.list.forEach(function(paper,index){
+						data.list.forEach(function(choiceDTO,index){
 							html += "<tr>" +
+									"<td><input type='checkbox' name='mycheck' onclick='changeCheck(this)' value='\""+ choiceDTO.choice.choiceId +"\"'></td>" +
 									"<td>" + (index + 1) +"</td>" +
-									"<td>" + paper.paperName +"</td>" +
-									"<td><a href='javascript:void(0)' class='btn btn-info' onclick='changePaper(\""+paper.paperId+"\",\""+paper.paperName+"\")'><i class='fa fa-edit'></i></a> " +
-									"<a href='/"+paper.paperId+"/paper_add_choice' class='btn btn-success'><i class='fa fa-external-link'></i></a> " +
-									"<a href='javascript:void(0)' class='btn btn-danger' onclick='showDelete(\""+paper.paperId+"\")'><i class='fa fa-trash-o'></i></a></td>" +
+									"<td>" + choiceDTO.categories1.categoriesName + "</td>" +
+									"<td>" + choiceDTO.categories2.categoriesName + "</td>" +
+									"<td>" + choiceDTO.choice.choiceQuestion + "</td>" +
 									"</tr>";
 						});
 						$("#tbody").html(html);
 
 					}else{
-						alert(data.msg);
+						$("#tbody").html("<tr><td colspan='4'>题库已空~<td><tr>");
 					}
 				},
 				error:function(jqXHR){
@@ -476,84 +456,153 @@
 			});
 		}
 
-		function changePaper(paperId,paperName){
-			$("#paperId").val(paperId);
-			$("#paperName1").val(paperName);
-			$("#changeModal").modal("show");
+		function choiceIdsInPaper(){
+			var paperId = ${paperId}
+			$.ajax({
+				type:"GET",
+				url:"/api/admin/paper/choice_ids_in_paper",
+				data:{
+					paperId:paperId
+				},
+				dataType:"json",
+				contentType:"application/x-www-form-urlencoded",
+				success:function(data){
+					$("#myChoice").html("");
+					if(data.length != 0 ){
+						var html = "";
+						data.forEach(function(choice,index){
+							html += "<tr>" +
+									"<td><input type='checkbox' name='mycheckDel' onclick='changeCheckDel(this)' value='\""+ choice.choiceId +"\"'></td>" +
+									"<td>" + (index + 1) +"</td>" +
+									"<td>" + choice.choiceQuestion + "</td>" +
+									"</tr>";
+						});
+						$("#myChoice").html(html);
+
+					}else{
+						$("#myChoice").html("<tr><td colspan='2'>尚未添加~<td><tr>");
+					}
+				},
+				error:function(jqXHR){
+					alert("发生错误："+ jqXHR.status);
+				}
+			});
 		}
 
-		function showConfirm(){
-			$("#paperName").val("");
-		}
-
-		function showDelete(paperId){
-			$("#paperId").val(paperId);
+		function showConfirm(msg){
+			$("#msg").html(msg);
 			$("#deleteModal").modal("show");
 		}
 
-		function createPaper(){
-			var paperName = $("#paperName").val();
-			$.ajax({
-				type:"POST",
-				url:"/api/admin/paper/create",
-				data:{
-					paperName:paperName
-				},
-				dataType:"json",
-				contentType:"application/x-www-form-urlencoded",
-				success:function(data){
-					if(data == true){
-						paging(1,20);
-					}
-				},
-				error:function(jqXHR){
-					alert("发生错误："+ jqXHR.status);
+		function allCheck() {
+			var mycheck = $("input[name='mycheck']");
+			var isTrue = true;
+			for(var i = 0 ; i < mycheck.length ; i ++){
+				if(mycheck[i].checked == false){
+					isTrue = false;
+					break;
 				}
-			});
+			}
+			if(isTrue){
+				mycheck.attr("checked",false);
+			}else{
+				mycheck.attr("checked",true);
+			}
+
 		}
 
-		function updatePaper(){
-			var paperId = $("#paperId").val();
-			var paperName = $("#paperName1").val();
-			$.ajax({
-				type:"PUT",
-				url:"/api/admin/paper/update",
-				data:{
-					paperId:paperId,
-					paperName:paperName
-				},
-				dataType:"json",
-				contentType:"application/x-www-form-urlencoded",
-				success:function(data){
-					if(data == true){
-						paging(pageNo,pageSize);
-					}
-				},
-				error:function(jqXHR){
-					alert("发生错误："+ jqXHR.status);
+		function changeCheck(obj){
+			if($(obj)[0].checked == false){
+				$("input[name='allcheck']").attr("checked",false);
+			}
+		}
+		function allCheckDel() {
+			var mycheck = $("input[name='mycheckDel']");
+			var isTrue = true;
+			for(var i = 0 ; i < mycheck.length ; i ++){
+				if(mycheck[i].checked == false){
+					isTrue = false;
+					break;
 				}
-			});
+			}
+			if(isTrue){
+				mycheck.attr("checked",false);
+			}else{
+				mycheck.attr("checked",true);
+			}
+
 		}
 
-		function deletePaper(){
-			var paperId = $("#paperId").val();
+		function changeCheckDel(obj){
+			if($(obj)[0].checked == false){
+				$("input[name='allcheckDel']").attr("checked",false);
+			}
+		}
+
+		function addChoice() {
+			var paperId = ${paperId};
+			var mycheck = $("input[name='mycheck']");
+			var choiceIds = "";
+			for (var i = 0; i < mycheck.length; i++) {
+				if(mycheck[i].checked == true)
+					choiceIds += mycheck[i].value + ",";
+			}
+			choiceIds = choiceIds.substring(0,choiceIds.length-1).replace(/"/g,"")
 			$.ajax({
-				type:"DELETE",
-				url:"/api/admin/paper/delete",
-				data:{
-					paperId:paperId,
+				type: "POST",
+				url: "/api/admin/paper/add_choice",
+				data: {
+					paperId: paperId,
+					choiceIds: choiceIds
 				},
-				dataType:"json",
-				contentType:"application/x-www-form-urlencoded",
-				success:function(data){
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded",
+				success: function (data) {
 					if(data == true){
+						showConfirm("保存成功")
 						paging(pageNo,pageSize);
+						choiceIdsInPaper();
+					}else{
+						showConfirm("保存失败")
 					}
 				},
-				error:function(jqXHR){
-					alert("发生错误："+ jqXHR.status);
+				error: function (jqXHR) {
+					alert("发生错误：" + jqXHR.status);
 				}
-			});
+			})
+		}
+
+		function deleteChoice(){
+			var paperId = ${paperId};
+			var mycheck = $("input[name='mycheckDel']");
+			var choiceIds = "";
+			for (var i = 0; i < mycheck.length; i++) {
+				if(mycheck[i].checked == true)
+					choiceIds += mycheck[i].value + ",";
+			}
+			choiceIds = choiceIds.substring(0,choiceIds.length-1).replace(/"/g,"")
+			$.ajax({
+				type: "DELETE",
+				url: "/api/admin/paper/del_choice",
+				data: {
+					paperId: paperId,
+					choiceIds: choiceIds
+				},
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded",
+				success: function (data) {
+					if(data == true){
+						showConfirm("删除成功")
+						paging(pageNo,pageSize);
+						choiceIdsInPaper();
+					}else{
+						showConfirm("删除失败")
+					}
+				},
+				error: function (jqXHR) {
+					alert("发生错误：" + jqXHR.status);
+				}
+			})
 		}
 
 	</script>

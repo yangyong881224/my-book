@@ -25,9 +25,12 @@ public interface PaperMapper {
     @Insert("insert into paper (paper_name) values (#{paperName})")
     public boolean create(Paper paper);
 
-    @Update("update paper set paper_name = #{paperName} where paper_id = #{paperId}")
+    @Update("<script>update paper set <if test='paperName!=null'>paper_name = #{paperName} </if><if test='choiceIds!=null'>choice_ids = #{choiceIds} </if> where paper_id = #{paperId}</script>")
     public boolean update(Paper paper);
 
     @Delete("delete from paper where paper_id = #{paperId}")
     boolean delete(Integer paperId);
+
+    @Select("select * from paper where paper_id = #{paperId}")
+    Paper getPaperById(int paperId);
 }
