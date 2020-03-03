@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Author: Yayo
@@ -16,52 +15,52 @@ public class GoPageController {
 
     @RequestMapping(value = "/welcome",method = RequestMethod.GET)
     public String welcome(){
-        return "/welcome";
+        return "sys/welcome";
     }
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String index(){
-        return "/index";
+        return "sys/index";
     }
 
     @RequestMapping(value = "/user" , method = RequestMethod.GET)
-    public String users(){return "/user";}
+    public String users(){return "sys/user";}
 
     @RequestMapping(value = "/paper" , method = RequestMethod.GET)
-    public String paper(){return "/paper";}
+    public String paper(){return "sys/paper";}
 
     @RequestMapping(value = "/categories" , method = RequestMethod.GET)
     public String categories(){
-        return "/categories";
+        return "sys/categories";
     }
 
     @RequestMapping(value = "/choice" , method = RequestMethod.GET)
     public String choice(){
-        return "/choice";
+        return "sys/choice";
     }
 
     @RequestMapping(value = "choice_create" , method = RequestMethod.GET)
     public String choiceCreate(){
-        return "/choice_create";
+        return "sys/choice_create";
     }
 
     @RequestMapping(value = "/choice_update/{choiceId}" , method = RequestMethod.GET)
     public String choiceUpdate(@PathVariable Long choiceId){
-        return "/choice_update";
+        return "sys/choice_update";
     }
 
     @RequestMapping(value = "/templates" , method = RequestMethod.GET)
     public String templates(){
-        return "/templates";
+        return "sys/templates";
     }
 
     @RequestMapping(value="/user_info" , method = RequestMethod.GET)
     public String userInfo(){
-        return "/user_info";
+        return "sys/user_info";
     }
 
     @RequestMapping(value = "/{paperId}/paper_add_choice")
     public String paperAddChoice(@PathVariable Integer paperId){
-        return "/paper_add_choice";
+        return "sys/paper_add_choice";
     }
 }

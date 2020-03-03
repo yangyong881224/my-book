@@ -21,7 +21,7 @@ public class MyInterceptor implements HandlerInterceptor {
             response.sendRedirect("/404");
             log.error("catch.error,request.uri:{},userSession:{}",request.getRequestURI(),request.getSession().getAttribute("user"));
             return false;
-        }else{
+        }else {
             if(request.getSession().getAttribute("user")!=null){
                 return true;
             }
