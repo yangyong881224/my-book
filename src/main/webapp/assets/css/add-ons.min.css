@@ -892,7 +892,7 @@ ul.comments-list.no-padding li {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  width: 56px;
+  width: 75px;
   height: 20px;
   background-color: transparent;
   -webkit-border-radius: 2px;
@@ -994,7 +994,7 @@ ul.comments-list.no-padding li {
   border: 1px solid white;
 }
 .switch-input:checked ~ .switch-handle {
-  left: 37px;
+  left: 56px;
   box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 .switch-primary > .switch-input:checked ~ .switch-label {

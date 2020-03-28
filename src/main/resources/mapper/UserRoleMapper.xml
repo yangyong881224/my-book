@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="UserRole">
+    <resultMap id="UserRoleMap" type="com.yayo.sys.bean.UserRole">
+        <id column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="target_id" property="targetId"/>
+        <result column="target_type" property="targetType"/>
+        <result column="deleted" property="deleted"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="updated_at" property="updatedAt"/>
+        <result column="updated_by" property="updatedBy"/>
+    </resultMap>
+    
+    <sql id="tb">
+        user_role
+    </sql>
+
+    <sql id="cols_all">
+        `role_id`,
+        <include refid="cols"/>
+    </sql>
+
+    <sql id="cols">
+        `role_name`,`role_code`,`target_id`,`target_type`,`deleted`,`created_at`,`created_by`,`updated_at`,`updated_by`
+    </sql>
+
+    <sql id="vals">
+        #{roleName},#{roleCode},#{targetId},#{targetType},#{deleted},now(),#{createdBy},now(),#{updatedBy}
+    </sql>
+
+
+    <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT COUNT(role_id) FROM
+        <include refid="tb"/>
+        LIMIT #{offset},#{limit}
+    </select>
+
+    <select id="paging" parameterType="java.util.Map" resultMap="UserRoleMap">
+        SELECT
+        <include refid="cols_all"/>
+        FROM
+        <include refid="tb"/>
+        LIMIT #{offset},#{limit}
+    </select>
+</mapper>

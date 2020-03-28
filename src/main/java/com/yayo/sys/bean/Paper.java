@@ -21,6 +21,8 @@ public class Paper implements Serializable {
     private String paperName;
     private Integer paperFlag;
     private String choiceIds;
+    private Long paperTime;
+    private Integer paperStatus;
 
     private List<Long> choiceIdList;
 

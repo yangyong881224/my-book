@@ -22,10 +22,14 @@ public interface PaperMapper {
     @Select("select count(paper_id) from paper")
     public Integer getPaperCount(Map<String,Object> params);
 
-    @Insert("insert into paper (paper_name) values (#{paperName})")
+    @Insert("insert into paper (paper_name,paper_time) values (#{paperName},#{paperTime})")
     public boolean create(Paper paper);
 
-    @Update("<script>update paper set <if test='paperName!=null'>paper_name = #{paperName} </if><if test='choiceIds!=null'>choice_ids = #{choiceIds} </if> where paper_id = #{paperId}</script>")
+    @Update("<script>update paper set " +
+            "<if test='paperName!=null'>paper_name = #{paperName}, paper_time = #{paperTime}</if>" +
+            "<if test='choiceIds!=null'>choice_ids = #{choiceIds} </if>" +
+            "<if test='paperStatus!=null'>paper_status = #{paperStatus} </if>" +
+            " where paper_id = #{paperId}</script>")
     public boolean update(Paper paper);
 
     @Delete("delete from paper where paper_id = #{paperId}")

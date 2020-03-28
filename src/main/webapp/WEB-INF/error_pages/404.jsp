@@ -39,16 +39,16 @@
 					<div class="col-lg-12 col-md-12 col-xs-12">
 					<div class="text-center">
 						<h1>404</h1>
-						<h2>Oops! Bad request ...</h2>
-						<p>The request cannot be fulfilled due to bad syntax.</p>
+						<h2>您呼叫的页面跑丢了......</h2>
+						<p>请尝试以下操作</p>
 						<a href="javascript: history.go(-1)">
-							<button class="btn btn-default"><span class="fa fa-chevron-left"> Go Back</span></button>
+							<button class="btn btn-default"><span class="fa fa-chevron-left"> 返回</span></button>
 						</a>
 						<a href="page-login.html">
-							<button class="btn btn-default"><span class="fa fa-lock"> Login</span></button>
+							<button class="btn btn-default"><span class="fa fa-lock"> 登录</span></button>
 						</a>
 						<a href="#">
-							<button class="btn btn-default"><span class="fa fa-envelope"> Contact Admin</span></button>	
+							<button class="btn btn-default"><span class="fa fa-envelope"> 去死</span></button>
 						</a>
 					</div>
 					
@@ -59,48 +59,6 @@
 			</div><!--/content-->	
 				
 		</div><!--/row-->
-
-		
-		<div id="usage-blank">
-			<ul>
-				<li>
-					<div class="title">Memory</div>
-					<div class="bar">
-						<div class="progress">
-						  	<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
-						</div>
-					</div>			
-					<div class="desc">2GB of 8GB</div>
-				</li>
-				<li>
-					<div class="title">HDD</div>
-					<div class="bar">
-						<div class="progress">
-						  	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-						</div>
-					</div>			
-					<div class="desc">750GB of 1TB</div>
-				</li>
-				<li>
-					<div class="title">SSD</div>
-					<div class="bar">
-						<div class="progress">
-					  		<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
-						</div>
-					</div>			
-					<div class="desc">300GB of 1TB</div>
-				</li>
-				<li>
-					<div class="title">Bandwidth</div>
-					<div class="bar">
-						<div class="progress">
-					  		<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-						</div>
-					</div>			
-					<div class="desc">50TB of 50TB</div>
-				</li>				
-			</ul>	
-		</div>						
 		
 	</div><!--/container-->
 		

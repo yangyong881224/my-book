@@ -23,6 +23,9 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  mapperLocations:  classpath*:mapper/*Mapper.xml
+  type-aliases-package: |
+    com.yayo.sys.beanc
 logging:
   level:
     com.yayo: debug

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 	String path = request.getContextPath();
@@ -23,248 +24,10 @@
 	</head>
 
 <body>
-	<!-- start: Header -->
-	<div class="navbar" role="navigation">
-	
-		<div class="container-fluid">		
-			
-			<ul class="nav navbar-nav navbar-actions navbar-left">
-				<li class="visible-md visible-lg"><a href="table.html#" id="main-menu-toggle"><i class="fa fa-th-large"></i></a></li>
-				<li class="visible-xs visible-sm"><a href="table.html#" id="sidebar-menu"><i class="fa fa-navicon"></i></a></li>			
-			</ul>
-			
-			<form class="navbar-form navbar-left">
-				<button type="submit" class="fa fa-search"></button>
-				<a><input type="text" class="form-control" placeholder="Search..."></a>
-			</form>
-			
-	        <ul class="nav navbar-nav navbar-right">
-				<li class="dropdown visible-md visible-lg">
-	        		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i><span class="badge">5</span></a>
-	        		<ul class="dropdown-menu">
-						<li class="dropdown-menu-header">
-							<strong>Messages</strong>
-							<div class="progress thin">
-							  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-							    <span class="sr-only">30% Complete (success)</span>
-							  </div>
-							</div>
-						</li>
-						<li class="avatar">
-							<a href="page-inbox.html">
-								<img class="avatar" src="<%= path%>/assets/img/avatar1.jpg">
-								<div>New message</div>
-								<small>1 minute ago</small>
-								<span class="label label-info">NEW</span>
-							</a>
-						</li>
-						<li class="avatar">
-							<a href="page-inbox.html">
-								<img class="avatar" src="<%= path%>/assets/img/avatar2.jpg">
-								<div>New message</div>
-								<small>3 minute ago</small>
-								<span class="label label-info">NEW</span>
-							</a>
-						</li>
-						<li class="avatar">
-							<a href="page-inbox.html">
-								<img class="avatar" src="<%= path%>/assets/img/avatar3.jpg">
-								<div>New message</div>
-								<small>4 minute ago</small>
-								<span class="label label-info">NEW</span>
-							</a>
-						</li>
-						<li class="avatar">
-							<a href="page-inbox.html">
-								<img class="avatar" src="<%= path%>/assets/img/avatar4.jpg">
-								<div>New message</div>
-								<small>30 minute ago</small>
-							</a>
-						</li>
-						<li class="avatar">
-							<a href="page-inbox.html">
-								<img class="avatar" src="<%= path%>/assets/img/avatar5.jpg">
-								<div>New message</div>
-								<small>1 hours ago</small>
-							</a>
-						</li>						
-						<li class="dropdown-menu-footer text-center">
-							<a href="page-inbox.html">View all messages</a>
-						</li>	
-	        		</ul>
-	      		</li>
-				<li class="dropdown visible-md visible-lg">
-	        		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="badge">3</span></a>
-	        		<ul class="dropdown-menu">
-						<li class="dropdown-menu-header">
-							<strong>Notifications</strong>
-							<div class="progress thin">
-							  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-							    <span class="sr-only">30% Complete (success)</span>
-							  </div>
-							</div>
-						</li>							
-                        <li class="clearfix">
-							<i class="fa fa-comment"></i> 
-                            <a href="page-activity.html" class="notification-user"> Sharon Rose </a> 
-                            <span class="notification-action"> replied to your </span> 
-                            <a href="page-activity.html" class="notification-link"> comment</a>
-                        </li>
-                        <li class="clearfix">
-                            <i class="fa fa-pencil"></i> 
-                            <a href="page-activity.html" class="notification-user"> Nadine </a> 
-                            <span class="notification-action"> just write a </span> 
-                            <a href="page-activity.html" class="notification-link"> post</a>
-                        </li>
-                        <li class="clearfix">
-                            <i class="fa fa-trash-o"></i> 
-                            <a href="page-activity.html" class="notification-user"> Lorenzo </a> 
-                            <span class="notification-action"> just remove <a href="#" class="notification-link"> 12 files</a></span> 
-                        </li>                        
-						<li class="dropdown-menu-footer text-center">
-							<a href="page-activity.html">View all notification</a>
-						</li>
-	        		</ul>
-	      		</li>
-				<li class="dropdown visible-md visible-lg">
-					 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i></a>					
-					<ul class="dropdown-menu update-menu" role="menu">
-						<li><a href="#"><i class="fa fa-database"></i> Database </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o"></i> Connection </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-bell"></i> Notification </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-envelope"></i> Message </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-flash"></i> Traffic </a>
-                        </li>
-						<li><a href="#"><i class="fa fa-credit-card"></i> Invoices </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-dollar"></i> Finances </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-thumbs-o-up"></i> Orders </a>
-                        </li>
-						<li><a href="#"><i class="fa fa-folder"></i> Directories </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-users"></i> Users </a>
-                        </li>		
-					</ul>
-				</li>
-				<li class="dropdown visible-md visible-lg">
-	        		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="user-avatar" src="<%= path%>/assets/img/avatar.jpg" alt="user-mail">jhonsmith@mail.com</a>
-	        		<ul class="dropdown-menu">
-						<li class="dropdown-menu-header">
-							<strong>Account</strong>
-						</li>						
-						<li><a href="page-profile.html"><i class="fa fa-user"></i> Profile</a></li>
-						<li><a href="page-login.html"><i class="fa fa-wrench"></i> Settings</a></li>
-						<li><a href="page-invoice.html"><i class="fa fa-usd"></i> Payments <span class="label label-default">10</span></a></li>
-						<li><a href="gallery.html"><i class="fa fa-file"></i> File <span class="label label-primary">27</span></a></li>
-						<li class="divider"></li>						
-						<li><a href="index.html"><i class="fa fa-sign-out"></i> Logout</a></li>	
-	        		</ul>
-	      		</li>
-				<li><a href="index.html"><i class="fa fa-power-off"></i></a></li>
-			</ul>
-			
-		</div>
-		
-	</div>
-	<!-- end: Header -->
-	
-	<div class="container-fluid content">
-	
-		<div class="row">
-				
-			<!-- start: Main Menu -->
-			<div class="sidebar ">
-								
-				<div class="sidebar-collapse">
-					<div class="sidebar-header t-center">
-                        <span><img class="text-logo" src="<%= path%>/assets/img/logo1.png"><i class="fa fa-space-shuttle fa-3x blue"></i></span>
-                    </div>										
-					<div class="sidebar-menu">						
-						<ul class="nav nav-sidebar">
-							<li><a href="index.html"><i class="fa fa-laptop"></i><span class="text"> Dashboard</span></a></li>
-							<li>
-								<a href="#"><i class="fa fa-file-text"></i><span class="text"> Pages</span> <span class="fa fa-angle-down pull-right"></span></a>
-								<ul class="nav sub">
-									<li><a href="page-activity.html"><i class="fa fa-car"></i><span class="text"> Activity</span></a></li>
-									<li><a href="page-inbox.html"><i class="fa fa-envelope"></i><span class="text"> Mail</span></a></li>
-									<li><a href="page-invoice.html"><i class="fa fa-credit-card"></i><span class="text"> Invoice</span></a></li>
-									<li><a href="page-profile.html"><i class="fa fa-heart-o"></i><span class="text"> Profile</span></a></li>
-									<li><a href="page-pricing-tables.html"><i class="fa fa-columns"></i><span class="text"> Pricing Tables</span></a></li>
-									<li><a href="page-404.html"><i class="fa fa-puzzle-piece"></i><span class="text"> 404</span></a></li>
-									<li><a href="page-500.html"><i class="fa fa-puzzle-piece"></i><span class="text"> 500</span></a></li>
-									<li><a href="page-lockscreen.html"><i class="fa fa-lock"></i><span class="text"> LockScreen1</span></a></li>
-									<li><a href="page-lockscreen2.html"><i class="fa fa-lock"></i><span class="text"> LockScreen2</span></a></li>
-									<li><a href="page-login.html"><i class="fa fa-key"></i><span class="text"> Login Page</span></a></li>
-									<li><a href="page-register.html"><i class="fa fa-sign-in"></i><span class="text"> Register Page</span></a></li>
-								</ul>	
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-list-alt"></i><span class="text"> Forms</span> <span class="fa fa-angle-down pull-right"></span></a>
-								<ul class="nav sub">
-									<li><a href="form-elements.html"><i class="fa fa-indent"></i><span class="text"> Form elements</span></a></li>
-									<li><a href="form-wizard.html"><i class="fa fa-tags"></i><span class="text"> Wizard</span></a></li>
-									<li><a href="form-dropzone.html"><i class="fa fa-plus-square-o"></i><span class="text"> Dropzone Upload</span></a></li>
-									<li><a href="form-x-editable.html"><i class="fa fa-pencil"></i><span class="text"> X-editable</span></a></li>
-								</ul>
-							</li>
-							<li><a href="table.html"><i class="fa fa-table"></i><span class="text"> Tables</span></a></li>
-							<li>
-								<a href="#"><i class="fa fa-signal"></i><span class="text"> Visual Chart</span> <span class="fa fa-angle-down pull-right"></span></a>
-								<ul class="nav sub">
-									<li><a href="chart-flot.html"><i class="fa fa-random"></i><span class="text"> Flot Chart</span></a></li>
-									<li><a href="chart-xchart.html"><i class="fa fa-retweet"></i><span class="text"> xChart</span></a></li>
-									<li><a href="chart-other.html"><i class="fa fa-bar-chart-o"></i><span class="text"> Other</span></a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-briefcase"></i><span class="text"> UI Features</span> <span class="fa fa-angle-down pull-right"></span></a>
-								<ul class="nav sub">
-									<li><a href="ui-sliders-progress.html"><i class="fa fa-align-left"></i><span class="text"> Progress</span></a></li>
-									<li><a href="ui-nestable-list.html"><i class="fa fa-outdent"></i><span class="text"> Nestable Lists</span></a></li>
-									<li><a href="ui-elements.html"><i class="fa fa-list"></i><span class="text"> Elements</span></a></li>
-									<li><a href="ui-panels.html"><i class="fa fa-list-alt"></i><span class="text"> Panels</span></a></li>
-									<li><a href="ui-buttons.html"><i class="fa fa-th"></i><span class="text"> Buttons</span></a></li>
-								</ul>
-							</li>
-							<li><a href="widgets.html"><i class="fa fa-life-bouy"></i><span class="text"> Widgets</span></a></li>
-							<li><a href="typography.html"><i class="fa fa-font"></i><span class="text"> Typography</span></a></li>
-							<li>
-								<a href="#"><i class="fa fa-bolt"></i><span class="text"> Icons</span> <span class="fa fa-angle-down pull-right"></span></a>
-								<ul class="nav sub">									
-									<li><a href="icons-font-awesome.html"><i class="fa fa-meh-o"></i><span class="text"> Font Awesome</span></a></li>
-									<li><a href="icons-climacons.html"><i class="fa fa-meh-o"></i><span class="text"> Climacons</span></a></li>
-								</ul>
-							</li>
-							<li><a href="gallery.html"><i class="fa fa-picture-o"></i><span class="text"> Gallery</span></a></li>							
-							<li><a href="calendar.html"><i class="fa fa-calendar"></i><span class="text"> Calendar</span></a></li>
-						</ul>
-					</div>					
-				</div>
-				<div class="sidebar-footer">					
-					
-					<div class="sidebar-brand">
-						Proton
-					</div>
-					
-					<ul class="sidebar-terms">
-						<li><a href="index.html#">Terms</a></li>
-						<li><a href="index.html#">Privacy</a></li>
-						<li><a href="index.html#">Help</a></li>
-						<li><a href="index.html#">About</a></li>
-					</ul>
-					
-					<div class="copyright text-center">
-						<small>Proton <i class="fa fa-coffee"></i> from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></small>
-					</div>					
-				</div>	
-				
-			</div>
-			<!-- end: Main Menu -->
+<jsp:include page="header.jsp"/>
+<!-- end: Header -->
+
+<jsp:include page="menu.jsp"/>
 						
 		<!-- start: Content -->
 		<div class="main sidebar-minified">
@@ -284,6 +47,8 @@
 									  <tr>
 										 <th style="width:5%">编号</th>
 										 <th>标题</th>
+										 <th>答题时间</th>
+										 <th>发布情况</th>
 										 <th style="width:20%">操作</th>
 									  </tr>
 								  </thead>   
@@ -319,6 +84,10 @@
 							<td>标题：</td>
 							<td><input type="text" id="paperName1"></td>
 						</tr>
+						<tr>
+							<td>答题时间(分钟)：</td>
+							<td><input type="number" id="paperTime1"></td>
+						</tr>
 					</table>
 				</div>
 				<div class="modal-footer">
@@ -340,6 +109,10 @@
 						<tr>
 							<td>标题：</td>
 							<td><input type="text" id="paperName"></td>
+						</tr>
+						<tr>
+							<td>答题时间(分钟)：</td>
+							<td><input type="number" id="paperTime"></td>
 						</tr>
 					</table>
 				</div>
@@ -373,49 +146,6 @@
 
 	<div class="clearfix"></div>
 
-		
-	<!-- start: JavaScript-->
-	<!--[if !IE]>-->
-
-			<script src="<%= path%>/assets/js/jquery-2.1.1.min.js"></script>
-
-	<!--<![endif]-->
-
-	<!--[if IE]>
-	
-		<script src="<%= path%>/assets/js/jquery-1.11.1.min.js"></script>
-	
-	<![endif]-->
-
-	<!--[if !IE]>-->
-
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='<%= path%>/assets/js/jquery-2.1.1.min.js'>"+"<"+"/script>");
-		</script>
-
-	<!--<![endif]-->
-
-	<!--[if IE]>
-	
-		<script type="text/javascript">
-	 	window.jQuery || document.write("<script src='<%= path%>/assets/js/jquery-1.11.1.min.js'>"+"<"+"/script>");
-		</script>
-		
-	<![endif]-->
-	<script src="<%= path%>/assets/js/jquery-migrate-1.2.1.min.js"></script>
-	<script src="<%= path%>/assets/js/bootstrap.min.js"></script>	
-	
-	
-	<!-- page scripts -->
-	<script src="<%= path%>/assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
-	<script src="<%= path%>/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="<%= path%>/assets/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
-	
-	<!-- theme scripts -->
-	<script src="<%= path%>/assets/js/SmoothScroll.js"></script>
-	<script src="<%= path%>/assets/js/jquery.mmenu.min.js"></script>
-	<script src="<%= path%>/assets/js/core.min.js"></script>
-	
 	<!-- end: JavaScript-->
 	<script>
 
@@ -456,10 +186,28 @@
 						total = data.total;
 						var html = "";
 						data.list.forEach(function(paper,index){
+						    var releaseType = "";
+						    if(paper.paperStatus == 1){
+								releaseType = "<input type='checkbox' class='switch-input' checked onclick='releasePaper(\""+paper.paperId+"\",\"0\")'>";
+							}else{
+                                releaseType = "<input type='checkbox' class='switch-input' onclick='releasePaper(\""+paper.paperId+"\",\"1\")'>";
+							}
 							html += "<tr>" +
 									"<td>" + (index + 1) +"</td>" +
 									"<td>" + paper.paperName +"</td>" +
-									"<td><a href='javascript:void(0)' class='btn btn-info' onclick='changePaper(\""+paper.paperId+"\",\""+paper.paperName+"\")'><i class='fa fa-edit'></i></a> " +
+									"<td>" + paper.paperTime +"</td>" +
+
+									"<td>" +
+										"<div class='col-md-1 col-sm-2 col-xs-3'>" +
+										"<label class='switch switch-info'>" +
+										releaseType +
+										"<span class='switch-label' data-on='已发布' data-off='未发布'></span>" +
+										"<span class='switch-handle'></span>" +
+										"</label>" +
+										"</div>" +
+									"</td>" +
+									
+									"<td><a href='javascript:void(0)' class='btn btn-info' onclick='changePaper(\""+paper.paperId+"\",\""+paper.paperName+"\",\""+paper.paperTime+"\")'><i class='fa fa-edit'></i></a> " +
 									"<a href='/"+paper.paperId+"/paper_add_choice' class='btn btn-success'><i class='fa fa-external-link'></i></a> " +
 									"<a href='javascript:void(0)' class='btn btn-danger' onclick='showDelete(\""+paper.paperId+"\")'><i class='fa fa-trash-o'></i></a></td>" +
 									"</tr>";
@@ -476,9 +224,10 @@
 			});
 		}
 
-		function changePaper(paperId,paperName){
+		function changePaper(paperId,paperName,paperTime){
 			$("#paperId").val(paperId);
 			$("#paperName1").val(paperName);
+			$("#paperTime1").val(paperTime);
 			$("#changeModal").modal("show");
 		}
 
@@ -493,11 +242,13 @@
 
 		function createPaper(){
 			var paperName = $("#paperName").val();
+			var paperTime = $("#paperTime").val();
 			$.ajax({
 				type:"POST",
 				url:"/api/admin/paper/create",
 				data:{
-					paperName:paperName
+					paperName:paperName,
+					paperTime:paperTime
 				},
 				dataType:"json",
 				contentType:"application/x-www-form-urlencoded",
@@ -515,12 +266,14 @@
 		function updatePaper(){
 			var paperId = $("#paperId").val();
 			var paperName = $("#paperName1").val();
+			var paperTime = $("#paperTime1").val();
 			$.ajax({
 				type:"PUT",
 				url:"/api/admin/paper/update",
 				data:{
 					paperId:paperId,
-					paperName:paperName
+					paperName:paperName,
+					paperTime:paperTime
 				},
 				dataType:"json",
 				contentType:"application/x-www-form-urlencoded",
@@ -533,6 +286,27 @@
 					alert("发生错误："+ jqXHR.status);
 				}
 			});
+		}
+
+		function releasePaper(paperId,paperStatus){
+            $.ajax({
+                type:"PUT",
+                url:"/api/admin/paper/update",
+                data:{
+                    paperId:paperId,
+                    paperStatus:paperStatus
+                },
+                dataType:"json",
+                contentType:"application/x-www-form-urlencoded",
+                success:function(data){
+                    if(data == true){
+                        paging(pageNo,pageSize);
+					}
+                },
+                error:function(jqXHR){
+                    alert("发生错误："+ jqXHR.status);
+                }
+            });
 		}
 
 		function deletePaper(){

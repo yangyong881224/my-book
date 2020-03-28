@@ -8,7 +8,7 @@
     	<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>习题管理</title>
+	    <title>消息管理</title>
 
 		<!-- Favicon and touch icons -->
 		<link rel="shortcut icon" href="<%= path%>/assets/ico/favicon.ico" type="image/x-icon" />
@@ -34,7 +34,7 @@
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>题库管理</strong></h2>
+							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>消息管理</strong></h2>
 							<div class="panel-actions">
 								<a href="/choice_create"><button type="button" class="btn btn-primary" onclick="createChoice()"><i class="fa fa-plus"></i>新建</button></a>
 							</div>
@@ -88,7 +88,6 @@
 	</div><!-- /.modal -->
 
 	<div class="clearfix"></div>
-
 
 	<script>
 
