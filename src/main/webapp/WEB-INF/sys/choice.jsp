@@ -40,7 +40,7 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<table class="table table-striped table-bordered bootstrap-datatable datatable">
+							<table class="table table-bordered table-striped table-condensed table-hover">
 								<thead>
 									  <tr>
 										 <th style="width:5%">编号</th>
@@ -127,8 +127,9 @@
 					$("#tbody").html("");
 					if(data.total != 0 ){
 						total = data.total;
+						console.log(data);
 						var html = "";
-						data.list.forEach(function(choiceDTO,index){
+						data.data.forEach(function(choiceDTO,index){
 							html += "<tr>" +
 									"<td>" + (index + 1) +"</td>" +
 									"<td>" + choiceDTO.categories1.categoriesName + "</td>" +

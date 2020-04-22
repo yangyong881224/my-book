@@ -1,20 +1,17 @@
 package com.yayo.sys.controller;
 
 import com.yayo.base.utils.Paging;
-import com.yayo.sys.bean.Choice;
-import com.yayo.sys.bean.Paper;
-import com.yayo.sys.dto.ChoiceDTO;
+import com.yayo.sys.mapper.dataobject.Choice;
+import com.yayo.sys.mapper.dataobject.Paper;
+import com.yayo.sys.controller.dto.ChoiceDTO;
 import com.yayo.sys.service.PaperService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: Yayo
@@ -36,8 +33,10 @@ public class PaperController {
      * @return
      */
     @RequestMapping(value = "/list" , method = RequestMethod.GET)
-    public Paging<Paper> getPaperList(Integer pageNo, Integer pageSize){
-        Paging<Paper> paging = paperService.getPaperList(pageNo,pageSize);
+    public Paging<Paper> getPaperList(Integer pageNo, Integer pageSize,String paperName){
+        Paper paper = new Paper();
+        paper.setPaperName(paperName);
+        Paging<Paper> paging = paperService.getPaperList(pageNo,pageSize,paper);
         return paging;
     }
 
@@ -70,7 +69,7 @@ public class PaperController {
      * @return
      */
     @RequestMapping(value = "/delete" , method = RequestMethod.DELETE)
-    public boolean deletePaper(Integer paperId){
+    public boolean deletePaper(Long paperId){
         return paperService.deletePaper(paperId);
     }
 
@@ -82,12 +81,8 @@ public class PaperController {
      * @return
      */
     @RequestMapping(value = "/paper_choice_list" , method = RequestMethod.GET)
-    public Paging<ChoiceDTO> paperChoiceList(Integer pageNo,Integer pageSize,Integer paperId){
-        Map<String,Object> params = new HashMap<>();
-        params.put("pageSize",pageSize);
-        params.put("pageNo",pageNo);
-        params.put("paperId",paperId);
-        return paperService.paperChoiceList(params);
+    public Paging<ChoiceDTO> paperChoiceList(Integer pageNo,Integer pageSize,Long paperId){
+        return paperService.paperChoiceList(pageNo,pageSize,paperId);
     }
 
     /**
@@ -97,7 +92,7 @@ public class PaperController {
      * @return
      */
     @RequestMapping(value = "/add_choice" , method = RequestMethod.POST)
-    public boolean addChoice(Integer paperId, String choiceIds){
+    public boolean addChoice(Long paperId, String choiceIds){
         Paper paper = new Paper();
         paper.setPaperId(paperId);
         paper.setChoiceIds(choiceIds);
@@ -105,15 +100,15 @@ public class PaperController {
     }
 
     @RequestMapping(value = "/choice_ids_in_paper" , method = RequestMethod.GET)
-    public List<Choice> ChoiceInPaper(Integer paperId){
+    public List<Choice> ChoiceInPaper(Long paperId){
         return paperService.ChoiceInPaper(paperId);
     }
 
     @RequestMapping(value = "/del_choice" , method = RequestMethod.DELETE)
-    public boolean delChoice(Integer paperId,String choiceIds){
+    public boolean delChoice(Long paperId,String choiceIds){
         Paper paper = new Paper();
-        paper.setChoiceIds(choiceIds);
         paper.setPaperId(paperId);
+        paper.setChoiceIds(choiceIds);
         return paperService.deleleChoice(paper);
     }
 }

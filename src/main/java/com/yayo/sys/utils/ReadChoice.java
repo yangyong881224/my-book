@@ -1,7 +1,7 @@
 package com.yayo.sys.utils;
 
 import com.yayo.base.component.ReadExcelUtil;
-import com.yayo.sys.dto.ChoiceUpdateDTO;
+import com.yayo.sys.controller.dto.ChoiceUpdateDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Row;
@@ -101,7 +101,7 @@ public class ReadChoice {
         choice.setAnswerMap(answerMap);
         choice.setChoiceType((int)Double.parseDouble(f));
         choice.setChoiceTrue(g);
-        choice.setCategoriesId((int)Double.parseDouble(h));
+        choice.setCategoriesId((long)Double.parseDouble(h));
         return choice;
     }
 }

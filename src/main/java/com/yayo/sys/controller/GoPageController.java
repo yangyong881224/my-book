@@ -60,7 +60,37 @@ public class GoPageController {
     }
 
     @RequestMapping(value = "/{paperId}/paper_add_choice")
-    public String paperAddChoice(@PathVariable Integer paperId){
+    public String paperAddChoice(@PathVariable Long paperId){
         return "sys/paper_add_choice";
+    }
+
+    @RequestMapping(value = "/message")
+    public String message(){
+        return "sys/message";
+    }
+
+    @RequestMapping(value = "/message_type")
+    public String messageType(){
+        return "sys/message_type";
+    }
+
+    @RequestMapping(value = "/message_examine")
+    public String messageExamine(){
+        return "sys/message_examine";
+    }
+
+    @RequestMapping(value = "/role")
+    public String role(){
+        return "sys/role";
+    }
+
+    @RequestMapping(value = "/role_user")
+    public String roleUser(){
+        return "sys/role_user";
+    }
+
+    @RequestMapping(value = "role_create")
+    public String roleCreate(){
+        return "sys/role_create";
     }
 }

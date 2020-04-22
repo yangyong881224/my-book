@@ -1,13 +1,11 @@
 package com.yayo.sys.controller;
 
-import com.yayo.sys.bean.Categories;
+import com.yayo.sys.mapper.dataobject.Categories;
 import com.yayo.sys.service.CategoriesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,7 +24,7 @@ public class CategoriesController {
     private CategoriesService categoriesService;
 
     @RequestMapping(value = "/list" , method = RequestMethod.GET)
-    public List<Categories> getParentCategories(Integer parentId){
+    public List<Categories> getParentCategories(Long parentId){
         List<Categories> categoriesList = categoriesService.getParentCategories(parentId);
         return categoriesList;
     }
@@ -37,7 +35,7 @@ public class CategoriesController {
     }
 
     @RequestMapping(value = "/delete" , method = RequestMethod.DELETE)
-    public boolean delete(Integer categoriesId){
+    public boolean delete(Long categoriesId){
         return categoriesService.delete(categoriesId);
     }
 

@@ -1,6 +1,7 @@
 package com.yayo.sys.controller;
 
-import com.yayo.sys.bean.User;
+import com.yayo.base.component.RequestContext;
+import com.yayo.sys.mapper.dataobject.User;
 import com.yayo.sys.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

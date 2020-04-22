@@ -1,6 +1,6 @@
 package com.yayo.sys.service.impl;
 
-import com.yayo.sys.bean.Categories;
+import com.yayo.sys.mapper.dataobject.Categories;
 import com.yayo.sys.mapper.CategoriesMapper;
 import com.yayo.sys.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class CategoriesServiceImpl implements CategoriesService {
     private CategoriesMapper categoriesMapper;
 
     @Override
-    public List<Categories> getParentCategories(Integer parentId) {
+    public List<Categories> getParentCategories(Long parentId) {
         return categoriesMapper.getCategoriesByParentId(parentId);
     }
 
@@ -30,7 +30,7 @@ public class CategoriesServiceImpl implements CategoriesService {
     }
 
     @Override
-    public boolean delete(Integer categoriesId) {
+    public boolean delete(Long categoriesId) {
         List<Categories> categoriesList = categoriesMapper.getCategoriesByParentId(categoriesId);
         if(!categoriesList.isEmpty()){
             return false;

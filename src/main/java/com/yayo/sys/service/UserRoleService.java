@@ -1,8 +1,10 @@
 package com.yayo.sys.service;
 
-import com.yayo.base.utils.Paging;
-import com.yayo.sys.dto.UserRoleDTO;
+import com.yayo.sys.controller.response.UserRoleResponse;
+
+import java.util.List;
 
 public interface UserRoleService {
-    Paging<UserRoleDTO> paging(Integer pageSize, Integer pageNo);
+
+    List<UserRoleResponse> findByUserId(Long userId);
 }

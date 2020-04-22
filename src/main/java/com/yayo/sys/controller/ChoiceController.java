@@ -1,16 +1,13 @@
 package com.yayo.sys.controller;
 
-import com.yayo.base.component.UploadUtil;
+import com.yayo.base.component.RequestContext;
 import com.yayo.base.utils.Paging;
-import com.yayo.sys.bean.Choice;
-import com.yayo.sys.bean.User;
-import com.yayo.sys.dto.ChoiceDTO;
-import com.yayo.sys.dto.ChoiceUpdateDTO;
+import com.yayo.sys.controller.dto.ChoiceDTO;
+import com.yayo.sys.controller.dto.ChoiceUpdateDTO;
+import com.yayo.sys.mapper.dataobject.Choice;
+import com.yayo.sys.mapper.dataobject.User;
 import com.yayo.sys.service.ChoiceService;
-import com.yayo.sys.utils.ReadChoice;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,8 +41,8 @@ public class ChoiceController {
     }
 
     @RequestMapping(value = "/create" , method = RequestMethod.POST)
-    public boolean create(Choice choice , HttpServletRequest request){
-        User user = (User)request.getSession().getAttribute("user");
+    public boolean create(Choice choice){
+        User user = RequestContext.getUser();
         if(user != null){
             choice.setCreatedBy(user.getUserId());
         }else{

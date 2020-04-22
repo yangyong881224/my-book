@@ -3,12 +3,12 @@ package com.yayo.starter;
 import com.google.common.collect.Maps;
 import com.yayo.base.utils.PageInfo;
 import com.yayo.base.utils.Paging;
-import com.yayo.sys.bean.Categories;
-import com.yayo.sys.bean.Choice;
-import com.yayo.sys.bean.UserRole;
 import com.yayo.sys.mapper.CategoriesMapper;
 import com.yayo.sys.mapper.ChoiceMapper;
-import com.yayo.sys.mapper.UserRoleDao;
+import com.yayo.sys.mapper.RoleDao;
+import com.yayo.sys.mapper.dataobject.Categories;
+import com.yayo.sys.mapper.dataobject.Choice;
+import com.yayo.sys.mapper.dataobject.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +32,7 @@ public class MyBookApplicationTests {
     private ChoiceMapper choiceMapper;
 
     @Autowired
-    private UserRoleDao userRoleDao;
+    private RoleDao roleDao;
 
     @Test
     public void test123(){
@@ -40,15 +40,15 @@ public class MyBookApplicationTests {
         Map<String,Object> params = Maps.newHashMap();
         params.put("limit",pageInfo.getLimit());
         params.put("offset",pageInfo.getOffset());
-        Paging<UserRole> userRolePaging = userRoleDao.paging(params);
-        System.out.println(userRolePaging);
+        Paging<Role> rolePaging = roleDao.paging(params);
+        System.out.println(rolePaging);
     }
 
     @Test
     public void test() {
         Categories categories = new Categories();
         categories.setCategoriesName("测试");
-        categories.setCategoriesParent(0);
+        categories.setCategoriesParent(0L);
         Boolean result = categoriesMapper.insert(categories);
         System.out.println(categories.getCategoriesId());
 
@@ -61,7 +61,7 @@ public class MyBookApplicationTests {
     public void test1() {
         Categories categories = new Categories();
         categories.setCategoriesName("测试");
-        categories.setCategoriesId(1);
+        categories.setCategoriesId(1L);
         boolean isTrue = categoriesMapper.update(categories);
         System.out.println(isTrue);
     }
@@ -69,7 +69,7 @@ public class MyBookApplicationTests {
     @Test
     public void test2() {
         List<Categories> categoriesList = new ArrayList<>();
-        for(int i = 0 ; i < 100 ; i ++){
+        for(long i = 0 ; i < 100 ; i ++){
             Categories categories = new Categories();
             categories.setCategoriesId(i);
             categoriesList.add(categories);
@@ -87,7 +87,7 @@ public class MyBookApplicationTests {
     @Test
     public void test3() {
         List<Categories> categoriesList = new ArrayList<>();
-        for(int i = 0 ; i < 100 ; i ++){
+        for(long i = 0 ; i < 100 ; i ++){
             Categories categories = new Categories();
             categories.setCategoriesId(i);
             categoriesList.add(categories);

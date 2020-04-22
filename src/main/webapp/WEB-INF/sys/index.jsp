@@ -38,13 +38,13 @@
                     <div class="header">
                         图书管理后台
                     </div>
-                    <form class="form-horizontal login" action="/api/admin/login" method="post">
+                    <form class="form-horizontal login" action="/welcome" method="get" onsubmit="return checkLogin();">
 
                         <fieldset class="col-sm-12">
                             <div class="form-group">
                                 <div class="controls row">
                                     <div class="input-group col-sm-12">
-                                        <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"/>
+                                        <input type="text" class="form-control" id="username" placeholder="请输入用户名"/>
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     </div>
                                 </div>
@@ -53,14 +53,14 @@
                             <div class="form-group">
                                 <div class="controls row">
                                     <div class="input-group col-sm-12">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"/>
+                                        <input type="password" class="form-control" id="password" placeholder="请输入密码"/>
                                         <span class="input-group-addon"><i class="fa fa-key"></i></span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="confirm">
-                                <%--@declare id="remember"--%><input type="checkbox" name="remember"/>
+                                <%--@declare id="remember"--%><input type="checkbox" onclick="javascript:void(alert('点我也没用，我记性不好！'))"/>
                                 <label for="remember">记住密码</label>
                             </div>
 
@@ -74,7 +74,7 @@
 
                     </form>
 
-                    <a class="pull-left" href="page-login.html#">忘记密码?</a>
+                    <a class="pull-left" href="javascript:void(alert('完了吧？傻了吧？'))">忘记密码?</a>
 <%--                    <a class="pull-right" href="page-register.html">注册!</a>--%>
 
                     <div class="clearfix"></div>
@@ -127,6 +127,30 @@
 <script src="<%= path%>/assets/js/SmoothScroll.js"></script>
 <script src="<%= path%>/assets/js/jquery.mmenu.min.js"></script>
 <script src="<%= path%>/assets/js/core.min.js"></script>
-
+<script>
+    function checkLogin(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var result = false;
+        $.ajax({
+            type:"POST",
+            url:"/api/admin/login",
+            data:{
+                username: username,
+                password:password
+            },
+            dataType:"json",
+            async: false,
+            contentType:"application/x-www-form-urlencoded",
+            success: function (data) {
+                result = data;
+            }
+        });
+        if(!result){
+            alert("用户名密码错误");
+        }
+        return result;
+    }
+</script>
 </body>
 </html>

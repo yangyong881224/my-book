@@ -156,7 +156,7 @@
 					if(data.total != 0 ){
 						total = data.total;
 						var html = "";
-						data.list.forEach(function(choiceDTO,index){
+						data.data.forEach(function(choiceDTO,index){
 							html += "<tr>" +
 									"<td><input type='checkbox' name='mycheck' onclick='changeCheck(this)' value='\""+ choiceDTO.choice.choiceId +"\"'></td>" +
 									"<td>" + (index + 1) +"</td>" +

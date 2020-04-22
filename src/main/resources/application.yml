@@ -20,6 +20,10 @@ spring:
       max-request-size: 10MB
   resources:
     static-locations: file:F:/my-book/upload/choice/
+  rabbitmq:
+    listener:
+      direct:
+        default-requeue-rejected:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
@@ -30,3 +34,21 @@ logging:
   level:
     com.yayo: debug
   path: .
+
+mq:
+  clientType: rocketmq #（备注：ons或者rocketmq）
+  nameServer: 192.168.2.174:9876 #(备注：消息服务器地址，ons就是一串url,需要VPN;或者rocketmq是 "IP:端口"地址）
+  topic: mytest # 该值要与mq.consumer.list中的topic保持一致
+  consumerBroadcastingId:
+  producer:
+    producerId: GID_innoecos_dev # （备注：ons有用,生产者ID,阿里云控制台提前创建好）
+    producerGroup: mybook_producer_group
+    retryAnotherBrokerWhenNotStore: false # （备注：发送失败是否尝试其他broker 可选配置）
+    retryTimesWhenSendFailed: 0 # （备注：发送失败重试次数 可选配置）
+    maxMessageSize: 1024 # （备注：发送消息最大体量 可选配置）
+    timeout: 3000 # （备注：发送超时时间 可选配置）
+  consumer.list:
+      consumerGroup: mybook_consumer_group
+      topic: mytest #（备注：消息的主题）
+      consumeThreadMin: 20 #（备注：消费消息最小线程数 可选配置）
+      consumeThreadMax: 64 #（备注：消费消息最大线程数 可选配置）

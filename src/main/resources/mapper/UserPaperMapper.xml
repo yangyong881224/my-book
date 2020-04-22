@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="UserPaperDO">
+    <resultMap id="userPaperMapper" type="com.yayo.user.dao.dataobject.UserPaperDO">
+        <id column="up_id" property="upId"/>
+        <result column="user_id" property="userId"/>
+        <result column="paper_id" property="paperId"/>
+        <result column="up_right" property="upRight"/>
+        <result column="up_wrong" property="upWrong"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+    
+    <sql id="tb">
+        user_paper
+    </sql>
+
+    <sql id="cols_all">
+        `up_id`,
+        <include refid="cols"/>
+    </sql>
+
+    <sql id="cols">
+       `user_id`,`paper_id`,`up_right`,`up_wrong`,`created_at`
+    </sql>
+
+    <sql id="vals">
+        #{userId},#{paperId},`upRight`,`upWrong`,`createdAt`
+    </sql>
+
+
+    <insert id="create" parameterType="com.yayo.user.dao.dataobject.UserPaperDO" >
+        insert into <include refid="tb"/>(<include refid="cols"/>) values (<include refid='vals'/>)
+    </insert>
+</mapper>

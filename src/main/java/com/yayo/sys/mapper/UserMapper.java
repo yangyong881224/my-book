@@ -1,6 +1,6 @@
 package com.yayo.sys.mapper;
 
-import com.yayo.sys.bean.User;
+import com.yayo.sys.mapper.dataobject.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package com.yayo.sys.mapper;
 
-import com.yayo.sys.bean.Categories;
+import com.yayo.sys.mapper.dataobject.Categories;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +16,14 @@ import java.util.List;
 public interface CategoriesMapper {
 
     @Select("select * from categories where categories_parent = #{parentId}")
-    public List<Categories> getCategoriesByParentId(Integer parentId);
+    public List<Categories> getCategoriesByParentId(Long parentId);
 
     @Insert("insert into categories (categories_name, categories_parent) values (#{categoriesName}, #{categoriesParent})")
-    @SelectKey(statement = "select last_insert_id()",resultType = Integer.class , before = false, keyProperty = "categoriesId")
+    @SelectKey(statement = "select last_insert_id()",resultType = Long.class , before = false, keyProperty = "categoriesId")
     public Boolean insert(Categories categories);
 
     @Delete("delete from categories where categories_id = #{categoriesId}")
-    public boolean delete(Integer categoriesId);
+    public boolean delete(Long categoriesId);
 
     @Update("update categories set categories_name = #{categoriesName} where categories_id = #{categoriesId}")
     public boolean update(Categories categories);

@@ -104,9 +104,9 @@ public abstract class MyBatisDao<T> {
             criteria = Maps.newHashMap();
         }
 
-        Integer total = this.sqlSession.selectOne(this.sqlId("count"), criteria);
+        Long total = this.sqlSession.selectOne(this.sqlId("count"), criteria);
         if (total <= 0L) {
-            return new Paging(0, Collections.emptyList());
+            return Paging.empty();
         } else {
             ((Map)criteria).put("offset", offset);
             ((Map)criteria).put("limit", limit);
@@ -120,9 +120,9 @@ public abstract class MyBatisDao<T> {
             criteria = Maps.newHashMap();
         }
 
-        Integer total = this.sqlSession.selectOne(this.sqlId("count"), criteria);
+        Long total = this.sqlSession.selectOne(this.sqlId("count"), criteria);
         if (total <= 0) {
-            return new Paging(0, Collections.emptyList());
+            return Paging.empty();
         } else {
             List<T> datas = this.sqlSession.selectList(this.sqlId("paging"), criteria);
             return new Paging(total, datas);

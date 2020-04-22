@@ -1,6 +1,6 @@
 package com.yayo.sys.service;
 
-import com.yayo.sys.bean.User;
+import com.yayo.sys.mapper.dataobject.User;
 
 import java.util.List;
 

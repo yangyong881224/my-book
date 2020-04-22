@@ -1,6 +1,6 @@
 package com.yayo.sys.service;
 
-import com.yayo.sys.bean.Categories;
+import com.yayo.sys.mapper.dataobject.Categories;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import java.util.List;
  * @Created at: 2019/9/18 8:56
  */
 public interface CategoriesService {
-    List<Categories> getParentCategories(Integer parentId);
+    List<Categories> getParentCategories(Long parentId);
 
     boolean insert(Categories categories);
 
-    boolean delete(Integer categoriesId);
+    boolean delete(Long categoriesId);
 }

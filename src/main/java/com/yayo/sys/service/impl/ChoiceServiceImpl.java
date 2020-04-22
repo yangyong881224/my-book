@@ -1,31 +1,25 @@
 package com.yayo.sys.service.impl;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.yayo.base.component.UploadUtil;
 import com.yayo.base.utils.PageInfo;
 import com.yayo.base.utils.Paging;
-import com.yayo.sys.bean.Categories;
-import com.yayo.sys.bean.Choice;
-import com.yayo.sys.dto.ChoiceDTO;
-import com.yayo.sys.dto.ChoiceUpdateDTO;
+import com.yayo.sys.mapper.dataobject.Categories;
+import com.yayo.sys.mapper.dataobject.Choice;
+import com.yayo.sys.controller.dto.ChoiceDTO;
+import com.yayo.sys.controller.dto.ChoiceUpdateDTO;
 import com.yayo.sys.mapper.CategoriesMapper;
 import com.yayo.sys.mapper.ChoiceMapper;
 import com.yayo.sys.service.ChoiceService;
 import com.yayo.sys.utils.ReadChoice;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.sound.midi.Soundbank;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -48,10 +42,10 @@ public class ChoiceServiceImpl implements ChoiceService {
     @Override
     public Paging<ChoiceDTO> paging(Map<String, Object> params) {
         //查询一级类目
-        List<Categories> parents = categoriesMapper.getCategoriesByParentId(0);
+        List<Categories> parents = categoriesMapper.getCategoriesByParentId(0L);
         //创建组合对象集
         List<ChoiceDTO> choiceDTOList = new ArrayList<>();
-        Integer total = 0;
+        Long total = 0L;
         //判断类目是否为空
         if(!parents.isEmpty()){
             //查询二级类目
@@ -149,22 +143,24 @@ public class ChoiceServiceImpl implements ChoiceService {
     }
 
     @Override
-    public Paging<ChoiceDTO> paperChoiceList(Map<String, Object> params) {
+    public Paging<ChoiceDTO> paperChoiceList(Integer pageNo, Integer pageSize, List<Long> choiceIdList) {
         //查询一级类目
-        List<Categories> parents = categoriesMapper.getCategoriesByParentId(0);
+        List<Categories> parents = categoriesMapper.getCategoriesByParentId(0L);
         //创建组合对象集
-        List<ChoiceDTO> choiceDTOList = new ArrayList<>();
-        Integer total = 0;
+        List<ChoiceDTO> choiceDTOList = Lists.newArrayList();
+        Long total = 0L;
         //判断类目是否为空
         if(!parents.isEmpty()){
             //查询二级类目
             List<Categories> categoriesList = categoriesMapper.getCategoriesByParentIds(parents);
             //获取页数起止
-            PageInfo pageInfo = new PageInfo(Integer.parseInt(params.get("pageNo").toString()),Integer.parseInt(params.get("pageSize").toString()));
+            PageInfo pageInfo = new PageInfo(pageNo,pageSize);
+
+            Map<String,Object> params = Maps.newHashMap();
             params.put("limit",pageInfo.getLimit());
             params.put("offset",pageInfo.getOffset());
             params.put("categoriesList",categoriesList);
-            params.put("choiceIds",params.get("choiceIds"));
+            params.put("choiceIds",choiceIdList);
             //查询总条数
             total = choiceMapper.countInPaper(params);
             if(total != 0){

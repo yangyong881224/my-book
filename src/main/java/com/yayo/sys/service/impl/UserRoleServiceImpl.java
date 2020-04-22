@@ -1,18 +1,32 @@
 package com.yayo.sys.service.impl;
 
-import com.yayo.base.utils.PageInfo;
-import com.yayo.base.utils.Paging;
-import com.yayo.sys.dto.UserRoleDTO;
+import com.google.common.collect.Lists;
+import com.yayo.sys.controller.response.UserRoleResponse;
+import com.yayo.sys.convert.UserRoleConverter;
+import com.yayo.sys.mapper.UserRoleDao;
+import com.yayo.sys.mapper.dataobject.UserRole;
 import com.yayo.sys.service.UserRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserRoleServiceImpl implements UserRoleService {
 
-    @Override
-    public Paging<UserRoleDTO> paging(Integer pageSize, Integer pageNo) {
-        PageInfo pageInfo = new PageInfo(pageNo,pageSize);
+    @Autowired
+    private UserRoleDao userRoleDao;
 
-        return null;
+    @Autowired
+    private UserRoleConverter userRoleConverter;
+
+    @Override
+    public List<UserRoleResponse> findByUserId(Long userId) {
+        List<UserRole> userRoleList = userRoleDao.findByUserId(userId);
+        if(userRoleList.isEmpty()){
+            return Lists.newArrayList();
+        }
+        return  userRoleList.stream().map(userRoleConverter::do2resp).collect(Collectors.toList());
     }
 }

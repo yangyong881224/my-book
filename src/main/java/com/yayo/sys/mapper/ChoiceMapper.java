@@ -1,7 +1,7 @@
 package com.yayo.sys.mapper;
 
-import com.yayo.sys.bean.Choice;
-import com.yayo.sys.dto.ChoiceUpdateDTO;
+import com.yayo.sys.mapper.dataobject.Choice;
+import com.yayo.sys.controller.dto.ChoiceUpdateDTO;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ public interface ChoiceMapper {
     public List<Choice> list(Map<String,Object> params);
 
     @Select("<script>select count(choice_id) from choice where categories_id in <foreach collection='categoriesList' item='categories' open='(' separator=',' close=')'>#{categories.categoriesId}</foreach></script>")
-    public Integer count(Map<String,Object> params);
+    public Long count(Map<String,Object> params);
 
     @Insert("insert into choice (categories_id, choice_question, choice_type, choice_answer,choice_true, created_at, created_by) " +
             "values (#{categoriesId},#{choiceQuestion},#{choiceType},#{choiceAnswer},#{choiceTrue},now(),#{createdBy})")
@@ -48,7 +48,7 @@ public interface ChoiceMapper {
             "categories_id in <foreach collection='categoriesList' item='categories' open='(' separator=',' close=')'>#{categories.categoriesId}</foreach> " +
             "<if test='choiceIds!=null'>and choice_id not in <foreach collection='choiceIds' item='choiceId' open='(' separator=',' close=')'>#{choiceId}</foreach> </if>" +
             "</script>")
-    Integer countInPaper(Map<String, Object> params);
+    Long countInPaper(Map<String, Object> params);
 
 
     @Select("<script>select * from choice where " +

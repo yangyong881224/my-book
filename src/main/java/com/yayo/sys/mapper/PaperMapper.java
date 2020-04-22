@@ -1,6 +1,6 @@
 package com.yayo.sys.mapper;
 
-import com.yayo.sys.bean.Paper;
+import com.yayo.sys.mapper.dataobject.Paper;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +16,17 @@ import java.util.Map;
 @Component
 public interface PaperMapper {
 
-    @Select("select * from paper limit #{offset},#{limit}")
+    @Select("<script>select * from paper where paper_flag = 0 " +
+            " <if test='paperName!=null'>and paper_name = #{paperName}</if>" +
+            " <if test='paperStatus!=null'>and paper_status = #{paperStatus} </if>" +
+            "limit #{offset},#{limit}</script>")
     public List<Paper> getPaperList(Map<String,Object> params);
 
-    @Select("select count(paper_id) from paper")
-    public Integer getPaperCount(Map<String,Object> params);
+    @Select("<script>select count(paper_id) from paper where paper_flag = 0 " +
+            " <if test='paperName!=null'>and paper_name = #{paperName}</if>" +
+            " <if test='paperStatus!=null'>and paper_status = #{paperStatus} </if>" +
+            "</script>")
+    public Long getPaperCount(Map<String,Object> params);
 
     @Insert("insert into paper (paper_name,paper_time) values (#{paperName},#{paperTime})")
     public boolean create(Paper paper);
@@ -32,9 +38,9 @@ public interface PaperMapper {
             " where paper_id = #{paperId}</script>")
     public boolean update(Paper paper);
 
-    @Delete("delete from paper where paper_id = #{paperId}")
-    boolean delete(Integer paperId);
+    @Delete("update paper set paper_flag = 1 where paper_id = #{paperId}")
+    boolean delete(Long paperId);
 
     @Select("select * from paper where paper_id = #{paperId}")
-    Paper getPaperById(int paperId);
+    Paper getPaperById(Long paperId);
 }

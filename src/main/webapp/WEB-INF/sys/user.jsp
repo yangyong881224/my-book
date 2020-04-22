@@ -104,39 +104,38 @@
 	
 	<div class="clearfix"></div>
 <script>
-        alert();
-        $.ajax({
-            type:"GET",
-            url:"/api/admin/user/list",
-            data:{},
-            dataType:"json",
-            contentType:"application/x-www-form-urlencoded",
-            success:function(data){
-                console.log(data);
-                $("#tbody").html("");
-                if(data.code == "0000"){
-                    var html = "";
-                    data.userList.forEach(function(user,index){
-                        html += "<tr>" +
-                            "<td>" + (index + 1) +"</td>" +
-                            "<td>" + user.username +"</td>" +
-                            "<td>" + user.userNickname +"</td>" +
-                            "<td>" + user.userIdCard +"</td>" +
-                            "<td>" + (user.userType==1?"会员用户":"普通用户") +"</td>" +
-                            "<td>" + user.createdAt +"</td>" +
-                            "<td>" + user.userLastLogin +"</td>" +
-                            "<td>编辑</td>" +
-                            "</tr>";
-                    });
-                    $("#tbody").html(html)
-                }else{
-                    alert(data.msg);
-                }
-            },
-            error:function(jqXHR){
-                alert("发生错误："+ jqXHR.status);
-            }
-        });
+	$.ajax({
+		type:"GET",
+		url:"/api/admin/user/list",
+		data:{},
+		dataType:"json",
+		contentType:"application/x-www-form-urlencoded",
+		success:function(data){
+			console.log(data);
+			$("#tbody").html("");
+			if(data.code == "0000"){
+				var html = "";
+				data.userList.forEach(function(user,index){
+					html += "<tr>" +
+						"<td>" + (index + 1) +"</td>" +
+						"<td>" + user.username +"</td>" +
+						"<td>" + user.userNickname +"</td>" +
+						"<td>" + user.userIdCard +"</td>" +
+						"<td>" + (user.userType==1?"会员用户":"普通用户") +"</td>" +
+						"<td>" + user.createdAt +"</td>" +
+						"<td>" + user.userLastLogin +"</td>" +
+						"<td>编辑</td>" +
+						"</tr>";
+				});
+				$("#tbody").html(html)
+			}else{
+				alert(data.msg);
+			}
+		},
+		error:function(jqXHR){
+			alert("发生错误："+ jqXHR.status);
+		}
+	});
 </script>
 
 </body>

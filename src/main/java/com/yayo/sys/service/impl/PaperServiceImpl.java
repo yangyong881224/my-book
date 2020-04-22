@@ -1,10 +1,11 @@
 package com.yayo.sys.service.impl;
 
+import com.google.common.collect.Lists;
 import com.yayo.base.utils.PageInfo;
 import com.yayo.base.utils.Paging;
-import com.yayo.sys.bean.Choice;
-import com.yayo.sys.bean.Paper;
-import com.yayo.sys.dto.ChoiceDTO;
+import com.yayo.sys.mapper.dataobject.Choice;
+import com.yayo.sys.mapper.dataobject.Paper;
+import com.yayo.sys.controller.dto.ChoiceDTO;
 import com.yayo.sys.mapper.PaperMapper;
 import com.yayo.sys.service.ChoiceService;
 import com.yayo.sys.service.PaperService;
@@ -12,7 +13,6 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,18 +32,19 @@ public class PaperServiceImpl implements PaperService {
     private ChoiceService choiceService;
 
     @Override
-    public Paging<Paper> getPaperList(Integer pageNo, Integer pageSize) {
+    public Paging<Paper> getPaperList(Integer pageNo, Integer pageSize, Paper paper) {
         PageInfo pageInfo = PageInfo.of(pageNo,pageSize);
         Map<String,Object> params = new HashMap<>();
         params.put("limit",pageInfo.getLimit());
         params.put("offset",pageInfo.getOffset());
-        Integer total = paperMapper.getPaperCount(params);
+        params.put("paperName",paper.getPaperName());
+        params.put("paperStatus",paper.getPaperStatus());
+        Long total = paperMapper.getPaperCount(params);
         if(total <= 0 ){
             return Paging.empty();
         }
         List<Paper> paperList = paperMapper.getPaperList(params);
         Paging<Paper> paging = new Paging<Paper>(total,paperList);
-        paging.setTotal(total);
         return paging;
     }
 
@@ -58,15 +59,14 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public boolean deletePaper(Integer paperId) {
+    public boolean deletePaper(Long paperId) {
         return paperMapper.delete(paperId);
     }
 
     @Override
-    public Paging<ChoiceDTO> paperChoiceList(Map<String, Object> params) {
-        Paper paper = paperMapper.getPaperById(Integer.parseInt(params.get("paperId").toString()));
-        params.put("choiceIds",paper.getChoiceIdList());
-        Paging<ChoiceDTO> choicePaging = choiceService.paperChoiceList(params);
+    public Paging<ChoiceDTO> paperChoiceList(Integer pageNo, Integer pageSize, Long paperId) {
+        Paper paper = paperMapper.getPaperById(paperId);
+        Paging<ChoiceDTO> choicePaging = choiceService.paperChoiceList(pageNo, pageSize,paper.getChoiceIdList());
         return choicePaging;
     }
 
@@ -81,12 +81,12 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public List<Choice> ChoiceInPaper(Integer paperId) {
+    public List<Choice> ChoiceInPaper(Long paperId) {
         Paper paper = paperMapper.getPaperById(paperId);
         if(paper.getChoiceIdList()!=null && paper.getChoiceIdList().size() != 0){
             return choiceService.getChoiceByIds(paper.getChoiceIdList());
         }else{
-            return new ArrayList<>();
+            return Lists.newArrayList();
         }
     }
 
