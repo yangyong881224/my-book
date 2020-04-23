@@ -1,6 +1,7 @@
 package com.yayo.sys.service;
 
-import com.yayo.sys.mapper.dataobject.User;
+import com.yayo.base.utils.Paging;
+import com.yayo.sys.controller.info.UserInfo;
 
 import java.util.List;
 
@@ -10,5 +11,11 @@ import java.util.List;
  * @Created at: 2019/9/12 10:53
  */
 public interface UserService {
-    public List<User> getUserListAll();
+    public Paging<UserInfo> paging(Integer pageNo, Integer pageSize);
+
+    UserInfo findById(Long userId);
+
+    List<UserInfo> findByIds(List<Long> userIdList);
+
+    UserInfo findByUsername(String username);
 }

@@ -41,15 +41,15 @@ public class RequestContext  {
     }
 
     public static void checkLoginStatus(){
-//        if(USER.get() == null){
-//            throw new RuntimeException("user.not.login");
-//        }
+        if(USER.get() == null){
+            throw new RuntimeException("user.not.login");
+        }
     }
 
     public static void clearUser(){
-        USER.set(null);
+        USER.remove();
     }
     public static void clearPerssion(){
-        ROLE_PERMISSION.set(null);
+        ROLE_PERMISSION.remove();
     }
 }

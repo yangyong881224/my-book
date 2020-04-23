@@ -14,6 +14,13 @@
             var roleName = scope.roleName;
             var roleCode = scope.roleCode;
             var targetType = scope.targetType;
+            if(rolePermission==null || rolePermission == ""
+            || roleName == null || roleName == ""
+            || roleCode == null || roleCode == ""
+            || targetType == null || targetType == ""){
+                alert("不能有空值");
+                return false;
+            }
             $.ajax({
                 type:"POST",
                 url:"/api/admin/role/create",
@@ -26,7 +33,11 @@
                 dataType:"json",
                 contentType:"application/x-www-form-urlencoded",
                 success:function(data){
-                    alert(data);
+                    if(data){
+                        $("#roleForm").submit();
+                    }else{
+                        alert("系统异常！");
+                    }
                 },
                 error:function(jqXHR){
                     alert("发生错误："+ jqXHR.status);

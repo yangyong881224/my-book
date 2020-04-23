@@ -35,15 +35,14 @@
     <div class="container-fluid">
 
         <ul class="nav navbar-nav navbar-actions navbar-left">
-            <li class="visible-md visible-lg"><a href="index.html#" id="main-menu-toggle"><i class="fa fa-th-large"></i></a></li>
-            <li class="visible-xs visible-sm"><a href="index.html#" id="sidebar-menu"><i class="fa fa-navicon"></i></a></li>
+            <li class="visible-md visible-lg"><a href="/welcome" id="main-menu-toggle"><i class="fa fa-th-large"></i></a></li>
+            <li class="visible-xs visible-sm"><a href="/welcome" id="sidebar-menu"><i class="fa fa-navicon"></i></a></li>
         </ul>
 
-        <form class="navbar-form navbar-left">
-            <button type="submit" class="fa fa-search"></button>
-            <input type="text" class="form-control" placeholder="Search..."></a>
-        </form>
-        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >免费模板</a></div>
+        <%--<form class="navbar-form navbar-left">--%>
+            <%--<button type="submit" class="fa fa-search"></button>--%>
+            <%--<input type="text" class="form-control" placeholder="Search..."></a>--%>
+        <%--</form>--%>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown visible-md visible-lg">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i><span class="badge">5</span></a>
@@ -158,14 +157,14 @@
                 </ul>
             </li>
             <li class="dropdown visible-md visible-lg">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="user-avatar" src="<%= path%>/assets/img/avatar.jpg" alt="user-mail">${user.userNickname}</a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="user-avatar" src="<%= path%>/assets/img/avatar.jpg" alt="user-mail">${rolePermission.user.userNickname}</a>
                 <ul class="dropdown-menu">
                     <li><a href="/user_info"><i class="fa fa-user"></i> 个人资料</a></li>
                     <li><a href="#"><i class="fa fa-wrench"></i> Settings</a></li>
                     <li><a href="#"><i class="fa fa-usd"></i> Payments <span class="label label-default">10</span></a></li>
                     <li><a href="#"><i class="fa fa-file"></i> File <span class="label label-primary">27</span></a></li>
                     <li class="divider"></li>
-                    <li><a href="/api/admin/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    <li><a href="/api/admin/logout"><i class="fa fa-sign-out"></i> 退出登陆</a></li>
                 </ul>
             </li>
             <li><a href="/api/admin/logout"><i class="fa fa-power-off"></i></a></li>

@@ -74,7 +74,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title">警告</h4>
-					<input type="hidden" id="choiceId" readonly>
+					<input type="hidden" id="roleId" readonly>
 				</div>
 				<div class="modal-body">
 					<span id="msg">删除后将无法恢复，是否确认删除</span>
@@ -135,7 +135,7 @@
 									"<td>" + role.roleCode + "</td>" +
 									"<td>" + role.targetType + "</td>" +
 									"<td><a href='#' class='btn btn-info'><i class='fa fa-edit'></i></a> " +
-									"<a href='javascript:void(0)' class='btn btn-danger' onclick=''><i class='fa fa-trash-o'></i></a> </td>" +
+									"<a href='javascript:void(0)' class='btn btn-danger' onclick='showConfirm(\""+role.roleId+"\")'><i class='fa fa-trash-o'></i></a> </td>" +
 									"</tr>";
 						});
 						$("#tbody").html(html);
@@ -150,18 +150,18 @@
 			});
 		}
 
-		function showConfirm(choiceId){
-			$("#choiceId").val(choiceId);
+		function showConfirm(roleId){
+			$("#roleId").val(roleId);
 			$("#deleteModal").modal("show");
 		}
 
 		function deleteChoice(){
-			var choiceId = $("#choiceId").val();
+			var roleId = $("#roleId").val();
 			$.ajax({
-				type:"DELETE",
-				url:"/api/admin/choice/delete",
+				type:"PUT",
+				url:"/api/admin/role/delete",
 				data:{
-					choiceId:choiceId
+					roleId:roleId
 				},
 				dataType:"json",
 				contentType:"application/x-www-form-urlencoded",

@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.yayo.base.utils.PageInfo;
 import com.yayo.base.utils.Paging;
+import com.yayo.sys.controller.info.UserInfo;
 import com.yayo.sys.controller.dto.RoleDTO;
 import com.yayo.sys.controller.dto.RolePermission;
 import com.yayo.sys.controller.request.RoleCreateRequest;
@@ -15,6 +16,7 @@ import com.yayo.sys.mapper.RoleDao;
 import com.yayo.sys.mapper.dataobject.Role;
 import com.yayo.sys.service.RoleService;
 import com.yayo.sys.service.UserRoleService;
+import com.yayo.sys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Autowired
     private RoleConverter roleConverter;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public Paging<RoleDTO> paging(RolePagingReuest rolePagingReuest) {
@@ -91,5 +96,31 @@ public class RoleServiceImpl implements RoleService {
         });
 
         return new RolePermission(rolePermission,targetType);
+    }
+
+    @Override
+    public List<RoleDTO> findByIds(List<Long> roleIdList) {
+        List<Role> roleList = roleDao.findByIds(roleIdList);
+        return roleList.stream().map(roleConverter::do2dto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Boolean delete(Long id , Long updatedBy) {
+        Role role = new Role();
+        role.setRoleId(id);
+        role.setDeleted(1);
+        role.setUpdatedBy(updatedBy);
+        return roleDao.update(role);
+    }
+
+    @Override
+    public List<RoleDTO> listAll() {
+        List<Role> roleList = roleDao.listAll();
+        return roleList.stream().map(roleConverter::do2dto).collect(Collectors.toList());
+    }
+
+    @Override
+    public UserInfo checkUser(String username) {
+        return userService.findByUsername(username);
     }
 }

@@ -106,30 +106,32 @@
 <script>
 	$.ajax({
 		type:"GET",
-		url:"/api/admin/user/list",
-		data:{},
+		url:"/api/admin/user/paging",
+		data:{
+		    pageNo:1,
+			pageSize:20
+		},
 		dataType:"json",
 		contentType:"application/x-www-form-urlencoded",
 		success:function(data){
-			console.log(data);
 			$("#tbody").html("");
-			if(data.code == "0000"){
+			if(data.empty == false){
 				var html = "";
-				data.userList.forEach(function(user,index){
+				data.data.forEach(function(user,index){
 					html += "<tr>" +
 						"<td>" + (index + 1) +"</td>" +
 						"<td>" + user.username +"</td>" +
 						"<td>" + user.userNickname +"</td>" +
 						"<td>" + user.userIdCard +"</td>" +
-						"<td>" + (user.userType==1?"会员用户":"普通用户") +"</td>" +
+						"<td>" + (user.userType=="ADMIN"?"管理员":user.userType=="EDITOR"?"网络编辑":user.userType=="AUTHOR"?"网文作者":user.userType=="MEMBER"?"会员":"普通用户") +"</td>" +
 						"<td>" + user.createdAt +"</td>" +
 						"<td>" + user.userLastLogin +"</td>" +
-						"<td>编辑</td>" +
+						"<td><a href='javascript:void(alert(\"好冷啊~(╯﹏╰)b\"))'>冻结</a></td>" +
 						"</tr>";
 				});
 				$("#tbody").html(html)
 			}else{
-				alert(data.msg);
+				alert("啥也没有");
 			}
 		},
 		error:function(jqXHR){

@@ -58,4 +58,17 @@
     <select id="findByUserId" parameterType="java.lang.Long" resultMap="UserRoleMap">
         SELECT <include refid="cols_all"/> FROM <include refid="tb"/> WHERE user_id = #{userId}
     </select>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM <include refid="tb"/> WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.yayo.sys.mapper.dataobject.UserRole">
+        UPDATE <include refid="tb"/>
+        <set>
+            <if test="roleId!=null"> ,role_id = #{roleId}</if>
+            <if test="targetType!=null"> ,target_type = #{targetType}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
 </mapper>

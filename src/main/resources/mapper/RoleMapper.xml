@@ -74,4 +74,26 @@
             #{roleId}
         </foreach>
     </select>
+
+    <update id="update" parameterType="com.yayo.sys.mapper.dataobject.Role">
+        UPDATE <include refid="tb"/>
+        <set>
+            updated_at = now()
+            <if test="roleName!=null"> , role_name = #{roleName}</if>
+            <if test="roleCode!=null"> , role_code = #{roleCode}</if>
+            <if test="targetId!=null"> , target_id = #{targetId}</if>
+            <if test="targetType!=null"> , target_type = #{targetType}</if>
+            <if test="rolePermission!=null"> , role_permission = #{rolePermission}</if>
+            <if test="deleted!=null"> , deleted = #{deleted}</if>
+            <if test="updatedBy!=null"> , updated_by = #{updatedBy}</if>
+        </set>
+        WHERE role_id = #{roleId}
+    </update>
+
+    <select id="list" resultMap="RoleMap">
+        SELECT <include refid="cols_all"/>
+        FROM <include refid="tb"/>
+        WHERE deleted = 0
+    </select>
+
 </mapper>

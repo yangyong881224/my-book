@@ -63,13 +63,20 @@
 								<div class="col-xs-6">
 									<div class="panel panel-default">
 										<div class="panel-heading"><i class="glyphicon glyphicon-tree-conifer"></i> 权限</div>
-										<div class="panel-body" ng-controller="myTree as myt">
-											角色名称：<input type="text" ng-model="roleName">
-											角色编码：<input type="text" ng-model="roleCode">
-											业务类型：<input type="text" ng-model="targetType">
-											<div tree="myTree" js-tree="vm.treeConfig" should-apply="vm.applyModelChanges()" ng-model="vm.treeData" tree="vm.treeInstance" tree-events="ready:vm.readyCB;create_node:vm.createCB"></div>
-											<input type="button" value="确认" ng-click="myt.confirmForm()">
-										</div>
+										<form action="/role" method="get" id="roleForm">
+											<div class="panel-body" ng-controller="myTree as myt">
+												角色名称：<input type="text" ng-model="roleName">
+												角色编码：<input type="text" ng-model="roleCode">
+												业务类型：<select ng-model="targetType"><option value="ADMIN" selected>管理员</option>
+																<option value="EDITOR">网络编辑</option>
+																<option value="AUTHOR">网文作者</option>
+																<option value="MEMBER">会员</option>
+																<option value="USER">普通用户</option>
+															</select>
+												<div tree="myTree" js-tree="vm.treeConfig" should-apply="vm.applyModelChanges()" ng-model="vm.treeData" tree="vm.treeInstance" tree-events="ready:vm.readyCB;create_node:vm.createCB"></div>
+												<input type="button" value="确认" ng-click="myt.confirmForm()">
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>

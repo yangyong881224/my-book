@@ -6,9 +6,11 @@ import com.yayo.base.utils.Paging;
 import com.yayo.sys.mapper.CategoriesMapper;
 import com.yayo.sys.mapper.ChoiceMapper;
 import com.yayo.sys.mapper.RoleDao;
+import com.yayo.sys.mapper.UserDao;
 import com.yayo.sys.mapper.dataobject.Categories;
 import com.yayo.sys.mapper.dataobject.Choice;
 import com.yayo.sys.mapper.dataobject.Role;
+import com.yayo.sys.mapper.dataobject.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +35,15 @@ public class MyBookApplicationTests {
 
     @Autowired
     private RoleDao roleDao;
+
+    @Autowired
+    private UserDao userDao;
+
+    @Test
+    public void testUserDao(){
+        User user = userDao.findByUserNamePassword("123","123");
+        System.out.println(user);
+    }
 
     @Test
     public void test123(){

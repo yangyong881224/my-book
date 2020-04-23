@@ -14,10 +14,6 @@ public class SessionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
-        RequestContext.clearUser();
-        RequestContext.clearPerssion();
-
         HttpServletRequest req = (HttpServletRequest) request;
         RolePermission rolePermission = (RolePermission) req.getSession().getAttribute("rolePermission");
         if(rolePermission != null){
@@ -25,6 +21,8 @@ public class SessionFilter implements Filter {
             RequestContext.setUser(rolePermission.getUser());
         }
         chain.doFilter(request,response);
+        RequestContext.clearUser();
+        RequestContext.clearPerssion();
     }
 
     @Override
