@@ -31,7 +31,6 @@
     <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
         SELECT COUNT(role_id) FROM
         <include refid="tb"/>
-        LIMIT #{offset},#{limit}
     </select>
 
     <select id="paging" parameterType="java.util.Map" resultMap="UserRoleMap">

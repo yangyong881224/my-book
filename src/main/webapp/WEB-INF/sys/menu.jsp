@@ -67,7 +67,7 @@
                             <li id="message_examine" style="display:none"><a href="/message_examine"><i class="fa fa-meh-o"></i><span class="text"> 消息审核</span></a></li>
                         </ul>
                     </li>
-                    <li id="templates" hidden style="display:none"><a href="/templates"><i class="fa fa-picture-o"></i><span class="text">模版下载</span></a></li>
+                    <li id="templates"  style="display:none"><a href="/templates"><i class="fa fa-picture-o"></i><span class="text">模版下载</span></a></li>
 
                 </ul>
             </div>

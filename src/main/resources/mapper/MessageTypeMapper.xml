@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="MessageType">
+    <resultMap id="MessageTypeMap" type="com.yayo.sys.mapper.dataobject.MessageType">
+        <id column="id" property="id"/>
+        <result column="message_type" property="messageType"/>
+        <result column="message_icon" property="messageIcon"/>
+        <result column="view_status" property="viewStatus"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    
+    <sql id="tb">
+        `message_type`
+    </sql>
+
+    <sql id="cols_all">
+        `id`,
+        <include refid="cols"/>
+    </sql>
+
+    <sql id="cols">
+        `message_type`,`message_icon`,`view_status`,`created_at`,`updated_at`
+    </sql>
+
+    <sql id="vals">
+        #{messageType},#{messageIcon},#{viewStatus},now(),now()
+    </sql>
+
+
+    <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+        SELECT COUNT(id) FROM
+        <include refid="tb"/>
+    </select>
+
+    <select id="paging" parameterType="java.util.Map" resultMap="MessageTypeMap">
+        SELECT
+        <include refid="cols_all"/>
+        FROM
+        <include refid="tb"/>
+        ORDER BY view_status DESC
+        LIMIT #{offset},#{limit}
+    </select>
+
+    <insert id="create" parameterType="com.yayo.sys.mapper.dataobject.MessageType" >
+        INSERT INTO <include refid="tb"/>
+        (<include refid="cols"/>)
+        VALUES
+        (<include refid="vals"/>)
+    </insert>
+
+    <update id="update" parameterType="com.yayo.sys.mapper.dataobject.MessageType">
+        UPDATE <include refid="tb"/>
+        <set>
+            updated_at = now()
+            <if test="viewStatus!=null"> ,view_status = #{viewStatus}</if>
+            <if test="messageType!=null and messageType!=''"> ,message_type = #{messageType}</if>
+            <if test="messageIcon!=null and messageType!=''"> ,message_icon = #{messageIcon}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="findById" parameterType="java.lang.Long" resultMap="MessageTypeMap">
+        SELECT <include refid="cols_all"/>
+        FROM <include refid="tb"/>
+        WHERE id = #{id}
+    </select>
+
+    <select id="list" resultMap="MessageTypeMap">
+        SELECT <include refid="cols_all"/>
+        FROM <include refid="tb"/>
+        WHERE view_status = 1
+    </select>
+
+</mapper>

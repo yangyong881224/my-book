@@ -8,7 +8,7 @@
     	<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>用户管理</title>
+	    <title>新建习题</title>
 
 		<!-- Favicon and touch icons -->
 		<link rel="shortcut icon" href="<%= path%>/assets/ico/favicon.ico" type="image/x-icon" />
@@ -220,62 +220,166 @@
 	<!-- end: JavaScript-->
 	<script>
 
-		getCategories(0);
+        getCategories(0);
 
-		//类目数据展示
-		function getCategories(parentId){
-			$.ajax({
-				type:"GET",
-				url:"/api/admin/categories/list",
-				data:{
-					parentId:parentId
-				},
-				dataType:"json",
-				contentType:"application/x-www-form-urlencoded",
-				success:function(data){
-					var html = "";
+        //类目数据展示
+        function getCategories(parentId){
+            $.ajax({
+                type:"GET",
+                url:"/api/admin/categories/list",
+                data:{
+                    parentId:parentId
+                },
+                dataType:"json",
+                contentType:"application/x-www-form-urlencoded",
+                success:function(data){
+                    var html = "";
 
-					if(parentId == 0){
-						$("#categoriesName1").val("");
-						$("#dbody").html("");
-						data.forEach(function(categories,index){
-							html += "<div style='cursor:pointer' onmouseenter='mouseOver(this)' onmouseleave='mouseOut(this)' onclick='addCategories(this,\""+categories.categoriesId+"\")'>" +
-									"<input hidden readonly value='"+categories.categoriesId+"'>" +
-									"<i>"+categories.categoriesName+"</i>" +
-									"</div>";
-						});
-						$("#dbody").html(html);
-					}else if(parentId != 0){
-						$("#categoriesName2").val("");
-						$("#dbody2").html("");
-						data.forEach(function(categories,index){
-							html += "<div style='cursor:pointer' onmouseenter='mouseOver(this)' onmouseleave='mouseOut(this)' onclick='addCategories2(this,\""+categories.categoriesId+"\")' >" +
-									"<input hidden readonly value='"+categories.categoriesId+"'>" +
-									"<i>"+categories.categoriesName+"</i>" +
-									"</div>";
-						});
-						$("#dbody2").html(html);
-					}
-				},
-				error:function(jqXHR){
-					alert("发生错误："+ jqXHR.status);
-				}
-			});
-		}
-		function mouseOver(obj){
-			var div=$(obj);
-			if(div.css("background-color") == "rgba(0, 0, 0, 0)")
-				div.css("background-color","#C0C0C0");
-		}
-		function mouseOut(obj){
-			var div=$(obj);
-			if(div.css("background-color")=="rgb(192, 192, 192)")
-				div.css("background-color","");
-		}
-		//插入
-		function createChoice(){
+                    if(parentId == 0){
+                        $("#categoriesName1").val("");
+                        $("#dbody").html("");
+                        data.forEach(function(categories,index){
+                            html += "<div style='cursor:pointer' onmouseenter='mouseOver(this)' onmouseleave='mouseOut(this)' onclick='addCategories(this,\""+categories.categoriesId+"\")'>" +
+                                "<input hidden readonly value='"+categories.categoriesId+"'>" +
+                                "<i>"+categories.categoriesName+"</i>" +
+                                "</div>";
+                        });
+                        $("#dbody").html(html);
+                    }else if(parentId != 0){
+                        $("#categoriesName2").val("");
+                        $("#dbody2").html("");
+                        data.forEach(function(categories,index){
+                            html += "<div style='cursor:pointer' onmouseenter='mouseOver(this)' onmouseleave='mouseOut(this)' onclick='addCategories2(this,\""+categories.categoriesId+"\")' >" +
+                                "<input hidden readonly value='"+categories.categoriesId+"'>" +
+                                "<i>"+categories.categoriesName+"</i>" +
+                                "</div>";
+                        });
+                        $("#dbody2").html(html);
+                    }
+                },
+                error:function(jqXHR){
+                    alert("发生错误："+ jqXHR.status);
+                }
+            });
+        }
+        function mouseOver(obj){
+            var div=$(obj);
+            if(div.css("background-color") == "rgba(0, 0, 0, 0)")
+                div.css("background-color","#C0C0C0");
+        }
+        function mouseOut(obj){
+            var div=$(obj);
+            if(div.css("background-color")=="rgb(192, 192, 192)")
+                div.css("background-color","");
+        }
+        //弹出二级类目
+        function addCategories(obj,parentId){
+            var div=$(obj);
+            div.css("background-color","#A0A0A0");
+            var ds = div.siblings();
+            for(var i = 0 ; i < ds.length ; i ++){
+                ds[i].style.backgroundColor = "";
+            }
+            $("#categories2").show();
+            getCategories(parentId);
+        }
 
-		}
+        //弹出添加习题框
+        function addCategories2(obj,parentId){
+            var div=$(obj);
+            div.css("background-color","#A0A0A0");
+            var ds = div.siblings();
+            for(var i = 0 ; i < ds.length ; i ++){
+                ds[i].style.backgroundColor = "";
+            }
+            $("#categories3").show();
+            $("#parent3").html(parentId);
+        }
+
+        //题型变更
+        function changeType(type){
+            if(type == 2){
+                $("#oneAnswer").hide();
+                $("#moreAnswer").show();
+            }else if(type == 1){
+                $("#oneAnswer").show();
+                $("#moreAnswer").hide();
+            }
+        }
+        //插入
+        function createChoice(){
+            var categoriesId = $("#parent3").html();
+            var choiceQuestion = $("#textarea-input").val();
+            var choiceType = $("input[name='inline-radios']:checked").val();
+            var choiceAnswer = "";
+            var choiceTrue = "";
+            var params = [];
+            //判断题型，拼接相应的答案与正确答案
+            if(choiceType == 1){
+                choiceTrue = $("input[name='radios']:checked").val();
+                var answers = $("input[name='text-input1']");
+                var num = $("input[name='radios']");
+                for(var i = 0; i < answers.length; i ++){
+                    if(answers[i].value.trim() != ""){
+                        params.push({"num":num[i].value,"answer":answers[i].value});
+                    }
+                }
+            }else if(choiceType == 2){
+                var checkeds = $("input[name='checkbox']:checked");
+                for(var i = 0 ; i < checkeds.length ; i ++){
+                    choiceTrue += checkeds[i].value + ",";
+                }
+                choiceTrue = choiceTrue.substring(0,choiceTrue.length-1);
+                var answers = $("input[name='text-input2']");
+                var num = $("input[name='checkbox']");
+                for(var i = 0 ; i < answers.length ; i ++){
+                    if(answers[i].value.trim() != ""){
+                        params.push({"num":num[i].value,"answer":answers[i].value})
+                    }
+                }
+            }
+            //将答案转换成JSON格式
+            choiceAnswer = JSON.stringify(params);
+            $.ajax({
+                type:"POST",
+                url:"/api/admin/choice/create",
+                data:{
+                    categoriesId : categoriesId,
+                    choiceQuestion : choiceQuestion,
+                    choiceAnswer : choiceAnswer,
+                    choiceTrue : choiceTrue,
+                    choiceType : choiceType
+                },
+                dataType:"json",
+                contentType:"application/x-www-form-urlencoded",
+                success:function(data){
+                    if(data == true){
+                        $("#msg").html("保存成功！");
+                        $("#myModal").modal("show");
+                        $("#textarea-input").val("");
+                        $("#inline-radio1").attr("checked",true);
+                        $("input[name='radios']:checked").attr("checked",false);
+                        $("input[name='text-input1']").attr("value","");
+                        $("#oneAnswer").show();
+                        $("input[name='checkbox']:checked").attr("checked",false);
+                        $("input[name='text-input2']").attr("value","");
+                        $("#moreAnswer").hide();
+
+                    }else{
+                        $("#msg").html("保存失败，请刷新页面重试或者联系管理员！")
+                        $("#myModal").modal("show");
+                    }
+                },
+                error:function(jqXHR){
+                    $("#msg").html("发生错误："+ jqXHR.status)
+                    $("#myModal").modal("show");
+                }
+            });
+        }
+        //批量插入
+        function createBatch(){
+
+        }
 
 	</script>
 

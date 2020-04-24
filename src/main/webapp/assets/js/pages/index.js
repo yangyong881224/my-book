@@ -133,20 +133,20 @@ $(document).ready(function(){
 	});
 	
 	/*------- Moris Chart -------*/
-	Morris.Donut({
-		element: 'hero-donut',
-		data: [
-			{label: 'Chrome', value: 17 },
-			{label: 'Opera', value: 18 },
-	      	{label: 'Firefox', value: 23 },
-	      	{label: 'Safari', value: 12 },
-	      	{label: 'IE', value: 8 },
-			{label: 'Other', value: 22 }
-	    ],
-		colors: ["#36A9E1", "#d1b993", "#bdea74", "#67c2ef", "#fabb3d", "#ff5454"],
-		formatter: function (y) { return y + "%" }
-	});
-	
+	// Morris.Donut({
+	// 	element: 'hero-donut',
+	// 	data: [
+	// 		{label: 'Chrome', value: 17 },
+	// 		{label: 'Opera', value: 18 },
+	//       	{label: 'Firefox', value: 23 },
+	//       	{label: 'Safari', value: 12 },
+	//       	{label: 'IE', value: 8 },
+	// 		{label: 'Other', value: 22 }
+	//     ],
+	// 	colors: ["#36A9E1", "#d1b993", "#bdea74", "#67c2ef", "#fabb3d", "#ff5454"],
+	// 	formatter: function (y) { return y + "%" }
+	// });
+	//
 	
 	/*------- Realtime Update Chart -------*/
 	

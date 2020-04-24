@@ -132,11 +132,12 @@
 				contentType:"application/x-www-form-urlencoded",
 				success:function(data){
 					var html = "";
-
+					console.log()
 					if(parentId == 0){
 						$("#categoriesName1").val("");
 						$("#dbody").html("");
 						data.forEach(function(categories,index){
+						    console.log(categories);
 							html += "<div style='cursor:pointer' onmouseenter='mouseOver(this)' onmouseleave='mouseOut(this)' onclick='addCategories(this,\""+categories.categoriesId+"\")'>" +
 									"<input hidden readonly value='"+categories.categoriesId+"'>" +
 									"<i>"+categories.categoriesName+"</i>" +

@@ -241,7 +241,7 @@
     <script src="<%= path%>/assets/plugins/d3/d3.min.js"></script>
 
     <!-- inline scripts related to this page -->
-    <script src="<%= path%>/assets/js/pages/index.js"></script>
+    <%--<script src="<%= path%>/assets/js/pages/index.js"></script>--%>
 
     <!-- end: JavaScript-->
 

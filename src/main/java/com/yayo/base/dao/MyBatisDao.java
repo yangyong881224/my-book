@@ -108,8 +108,8 @@ public abstract class MyBatisDao<T> {
         if (total <= 0L) {
             return Paging.empty();
         } else {
-            ((Map)criteria).put("offset", offset);
-            ((Map)criteria).put("limit", limit);
+            criteria.put("offset", offset);
+            criteria.put("limit", limit);
             List<T> datas = this.sqlSession.selectList(this.sqlId("paging"), criteria);
             return new Paging(total, datas);
         }

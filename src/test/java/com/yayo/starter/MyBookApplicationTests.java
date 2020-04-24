@@ -3,10 +3,7 @@ package com.yayo.starter;
 import com.google.common.collect.Maps;
 import com.yayo.base.utils.PageInfo;
 import com.yayo.base.utils.Paging;
-import com.yayo.sys.mapper.CategoriesMapper;
-import com.yayo.sys.mapper.ChoiceMapper;
-import com.yayo.sys.mapper.RoleDao;
-import com.yayo.sys.mapper.UserDao;
+import com.yayo.sys.mapper.*;
 import com.yayo.sys.mapper.dataobject.Categories;
 import com.yayo.sys.mapper.dataobject.Choice;
 import com.yayo.sys.mapper.dataobject.Role;
@@ -38,6 +35,14 @@ public class MyBookApplicationTests {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private MessageTypeDao messageTypeDao;
+
+    @Test
+    public void messageTypeDaoTest(){
+        messageTypeDao.paging(0,20);
+    }
 
     @Test
     public void testUserDao(){

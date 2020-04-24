@@ -39,7 +39,6 @@
         SELECT COUNT(role_id) FROM
         <include refid="tb"/>
         WHERE deleted = 0
-        LIMIT #{offset},#{limit}
     </select>
 
     <select id="paging" parameterType="java.util.Map" resultMap="RoleMap">

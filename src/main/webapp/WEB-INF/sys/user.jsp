@@ -38,42 +38,30 @@
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>Combined All Table</strong></h2>
-							<div class="panel-actions">
-								<a href="table.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
-								<a href="table.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
-								<a href="table.html#" class="btn-close"><i class="fa fa-times"></i></a>
-							</div>
+							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>用户管理</strong></h2>
 						</div>
 						<div class="panel-body">
 							<table class="table table-bordered table-striped table-condensed table-hover">
-								  <thead>
-									  <tr>
-										 <th>编号</th>
-										 <th>用户名</th>
-										 <th>昵称</th>
-										 <th>身份证号</th>
-										 <th>用户身份</th>
-										 <th>创建日期</th>
-										 <th>最后登录</th>
-										 <th>操作</th>
-									  </tr>
-								  </thead>   
-								  <tbody id="tbody">
+								<thead>
+									<tr>
+										<th>编号</th>
+										<th>用户名</th>
+										<th>昵称</th>
+										<th>身份证号</th>
+										<th>用户身份</th>
+										<th>创建日期</th>
+										<th>最后登录</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody id="tbody">
 
-								  </tbody>
-							 </table>  
-							 <ul class="pagination">
-								<li><a href="table.html#">上一页</a></li>
-								<li class="active">
-								  <a href="table.html#">1</a>
-								</li>
-								<li><a href="table.html#">2</a></li>
-								<li><a href="table.html#">3</a></li>
-								<li><a href="table.html#">4</a></li>
-								<li><a href="table.html#">5</a></li>
-								<li><a href="table.html#">下一页</a></li>
-							  </ul>     
+								</tbody>
+							</table>
+							<ul class="pagination" style="float:right;margin-right: 50px">
+								<li><a href="javascript:void(0)" onclick="prew()">上一页</a></li>
+								<li><a href="javascript:void(0)" onclick="next()">下一页</a></li>
+							</ul>
 						</div>
 					</div>
 				</div><!--/col-->
@@ -104,40 +92,65 @@
 	
 	<div class="clearfix"></div>
 <script>
-	$.ajax({
-		type:"GET",
-		url:"/api/admin/user/paging",
-		data:{
-		    pageNo:1,
-			pageSize:20
-		},
-		dataType:"json",
-		contentType:"application/x-www-form-urlencoded",
-		success:function(data){
-			$("#tbody").html("");
-			if(data.empty == false){
-				var html = "";
-				data.data.forEach(function(user,index){
-					html += "<tr>" +
-						"<td>" + (index + 1) +"</td>" +
-						"<td>" + user.username +"</td>" +
-						"<td>" + user.userNickname +"</td>" +
-						"<td>" + user.userIdCard +"</td>" +
-						"<td>" + (user.userType=="ADMIN"?"管理员":user.userType=="EDITOR"?"网络编辑":user.userType=="AUTHOR"?"网文作者":user.userType=="MEMBER"?"会员":"普通用户") +"</td>" +
-						"<td>" + user.createdAt +"</td>" +
-						"<td>" + user.userLastLogin +"</td>" +
-						"<td><a href='javascript:void(alert(\"好冷啊~(╯﹏╰)b\"))'>冻结</a></td>" +
-						"</tr>";
-				});
-				$("#tbody").html(html)
-			}else{
-				alert("啥也没有");
-			}
-		},
-		error:function(jqXHR){
-			alert("发生错误："+ jqXHR.status);
+    var pageNo = 1;
+    var pageSize = 10;
+    var total = 0;
+    paging(pageNo,pageSize);
+
+    function prew(){
+        if(total != 0 && pageNo > 1){
+            pageNo = pageNo - 1;
+            paging(pageNo,pageSize);
+        }else{
+            alert("已经是第一页了，你还要翻上南天门吗？");
 		}
-	});
+    }
+
+    function next(){
+        var totalPage = Math.ceil(total/pageSize);
+        if(pageNo < totalPage){
+            pageNo = pageNo + 1;
+            paging(pageNo,pageSize);
+        }else{
+            alert("这是最后一页了，你要翻到地狱吗？");
+		}
+    }
+    function paging(){
+        $.ajax({
+            type:"GET",
+            url:"/api/admin/user/paging",
+            data:{
+                pageNo:1,
+                pageSize:20
+            },
+            dataType:"json",
+            contentType:"application/x-www-form-urlencoded",
+            success:function(data){
+                $("#tbody").html("");
+                if(data.empty == false){
+                    var html = "";
+                    data.data.forEach(function(user,index){
+                        html += "<tr>" +
+                            "<td>" + (index + 1) +"</td>" +
+                            "<td>" + user.username +"</td>" +
+                            "<td>" + user.userNickname +"</td>" +
+                            "<td>" + user.userIdCard +"</td>" +
+                            "<td>" + (user.userType=="ADMIN"?"管理员":user.userType=="EDITOR"?"网络编辑":user.userType=="AUTHOR"?"网文作者":user.userType=="MEMBER"?"会员":"普通用户") +"</td>" +
+                            "<td>" + user.createdAt +"</td>" +
+                            "<td>" + user.userLastLogin +"</td>" +
+                            "<td><a href='javascript:void(alert(\"好冷啊~(╯﹏╰)b\"))'>冻结</a></td>" +
+                            "</tr>";
+                    });
+                    $("#tbody").html(html)
+                }else{
+                    alert("啥也没有");
+                }
+            },
+            error:function(jqXHR){
+                alert("发生错误："+ jqXHR.status);
+            }
+        });
+	}
 </script>
 
 </body>

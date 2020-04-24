@@ -18,6 +18,7 @@ import java.util.UUID;
 @Slf4j
 @Component
 public class UploadUtil {
+
     public static Map<String,String> upload(MultipartFile file, String filePath) {
         Map<String,String> result = new HashMap<>();
         if (file.isEmpty()) {

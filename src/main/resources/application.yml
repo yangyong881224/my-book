@@ -19,17 +19,15 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
   resources:
-    static-locations: file:F:/my-book/upload/choice/
-  rabbitmq:
-    listener:
-      direct:
-        default-requeue-rejected:
+    static-locations: file:${upload.filePath.miscIcon},${upload.filePath.userIcon}
+
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapperLocations:  classpath*:mapper/*Mapper.xml
   type-aliases-package: |
     com.yayo.sys.beanc
+
 logging:
   level:
     com.yayo: debug
@@ -48,7 +46,12 @@ mq:
     maxMessageSize: 1024 # （备注：发送消息最大体量 可选配置）
     timeout: 3000 # （备注：发送超时时间 可选配置）
   consumer.list:
-      consumerGroup: mybook_consumer_group
-      topic: mytest #（备注：消息的主题）
-      consumeThreadMin: 20 #（备注：消费消息最小线程数 可选配置）
-      consumeThreadMax: 64 #（备注：消费消息最大线程数 可选配置）
+    consumerGroup: mybook_consumer_group
+    topic: mytest #（备注：消息的主题）
+    consumeThreadMin: 20 #（备注：消费消息最小线程数 可选配置）
+    consumeThreadMax: 64 #（备注：消费消息最大线程数 可选配置）
+
+upload:
+  filePath:
+    miscIcon: /assets/upload/misc_icon/
+    userIcon: /assets/upload/user_icon/

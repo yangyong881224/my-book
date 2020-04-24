@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @Author: Yayo
@@ -61,31 +62,16 @@ public class ChoiceServiceImpl implements ChoiceService {
                 //根据二级类目查询选择题
                 List<Choice> choiceList = choiceMapper.list(params);
 
-                //开始拼装
-                for(Choice choice : choiceList){
-                    //组合对象
+                //代码改造--开始拼装
+                choiceDTOList = choiceList.stream().map(choice -> {
                     ChoiceDTO choiceDTO = new ChoiceDTO();
                     choiceDTO.setChoice(choice);
-                    //二级类目便利
-                    for(Categories categories : categoriesList){
-                        //二级类目与选择题匹配
-                        if(choice.getCategoriesId().equals(categories.getCategoriesId())){
-                            choiceDTO.setCategories2(categories);
-                            //一级类目便利
-                            for(Categories parent : parents){
-                                //一级类目与二级类目匹配
-                                if(categories.getCategoriesParent().equals(parent.getCategoriesId())){
-                                    choiceDTO.setCategories1(parent);
-                                    //如果匹配上，跳出当前循环
-                                    break;
-                                }
-                            }
-                            //如果匹配上，跳出当前循环
-                            break;
-                        }
-                    }
-                    choiceDTOList.add(choiceDTO);
-                }
+                    Categories categories2 = categoriesList.stream().filter(categories->choice.getCategoriesId().equals(categories.getCategoriesId())).findFirst().orElse(null);
+                    choiceDTO.setCategories2(categories2);
+                    Categories categories1 = parents.stream().filter(categories -> categories2.getCategoriesParent().equals(categories.getCategoriesId())).findFirst().orElse(null);
+                    choiceDTO.setCategories1(categories1);
+                    return choiceDTO;
+                }).collect(Collectors.toList());
             }
         }
         Paging paging = new Paging(total,choiceDTOList);
