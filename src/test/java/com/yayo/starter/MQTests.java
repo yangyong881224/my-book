@@ -6,8 +6,13 @@ import com.yayo.base.mq.request.MessageRequest;
 import com.yayo.base.mq.server.Consumer;
 import com.yayo.base.mq.server.Producer;
 import com.yayo.base.mq.server.api.MQMessage;
-import com.yayo.base.mq.server.node.Context;
+import com.yayo.base.mq.server.node.ConsumerNode;
+import com.yayo.base.mq.server.node.MessageContext;
+import com.yayo.base.mq.server.node.Node;
 import com.yayo.base.mq.server.node.NodeTrigger;
+import com.yayo.user.facade.UserMessageContext;
+import com.yayo.user.facade.node.TestMessageContext;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
@@ -55,7 +60,7 @@ public class MQTests {
         //总共发送五次消息
         for (String s : messageList) {
             //创建生产信息
-            Message message = new Message("", "testtag"+s, ("Test:" + s).getBytes());
+            Message message = new Message("mytest", "Test"+s, ("Test:" + s).getBytes());
             message.setDelayTimeLevel(3);
             //发送
             SendResult sendResult = producer.getProducer().send(message);
@@ -69,21 +74,21 @@ public class MQTests {
 
     @Test
     public void test() throws MQException {
-        MessageRequest messageRequest = new MessageRequest();
-        Map<String,Object> params = Maps.newHashMap();
-        params.put("userName","朱老六");
-        messageRequest.setParams(params);
-        mqMessage.sendMSG("mytest","TestNode",messageRequest,1000L,3);
+        TestMessageContext testMessageContext = new TestMessageContext();
+        testMessageContext.setClazz(TestMessageContext.class);
+        testMessageContext.setTitle("123123123213213123123");
+        mqMessage.sendMSG("mytest","TestNode1",testMessageContext,1000L,0);
         try {
-            Thread.sleep(10 * 1000);
+            Thread.sleep(30 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
+
     @Test
     public void nodeTest(){
-        nodeTrigger.fire("TestNode",new Context());
+        nodeTrigger.fire("TestNode",new MessageContext());
     }
 
 

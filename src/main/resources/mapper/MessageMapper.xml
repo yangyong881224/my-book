@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Message">
+    <resultMap id="MessageMap" type="com.yayo.sys.mapper.dataobject.Message">
+        <id column="id" property="id"/>
+        <result column="type_id" property="typeId"/>
+        <result column="send_type" property="sendType"/>
+        <result column="user_id" property="userId"/>
+        <result column="user_phone" property="userPhone"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="send_status" property="sendStatus"/>
+        <result column="examined" property="examined"/>
+        <result column="examine_status" property="examineStatus"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+    
+    <sql id="tb">
+        `message`
+    </sql>
+
+    <sql id="cols_all">
+        `id`,
+        <include refid="cols"/>
+    </sql>
+
+    <sql id="cols">
+        `type_id`,`send_type`,`user_id`,`user_phone`,`title`,`content`,`send_status`,`examined`,`examine_status`,`created_at`
+    </sql>
+
+    <sql id="vals">
+        #{typeId},#{sendType},#{userId},#{userPhone},#{title},#{content},0,#{examined},0,now()
+    </sql>
+
+
+    <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+        SELECT COUNT(id) FROM
+        <include refid="tb"/>
+    </select>
+
+    <select id="paging" parameterType="java.util.Map" resultMap="MessageMap">
+        SELECT
+        <include refid="cols_all"/>
+        FROM
+        <include refid="tb"/>
+        ORDER BY created_at DESC
+        LIMIT #{offset},#{limit}
+    </select>
+
+    <insert id="create" parameterType="com.yayo.sys.mapper.dataobject.Message" >
+        INSERT INTO <include refid="tb"/>
+        (<include refid="cols"/>)
+        VALUES
+        (<include refid="vals"/>)
+    </insert>
+
+    <update id="update" parameterType="com.yayo.sys.mapper.dataobject.Message">
+        UPDATE <include refid="tb"/>
+        <set>
+            <if test="examined!=null"> ,examined = #{examined}</if>
+            <if test="status!=null"> ,status = #{status}</if>
+            <if test="examineStatus!=null"> ,examine_status = #{examineStatus}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="findById" parameterType="java.lang.Long" resultMap="MessageMap">
+        SELECT <include refid="cols_all"/>
+        FROM <include refid="tb"/>
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>

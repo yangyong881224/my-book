@@ -24,21 +24,27 @@ public class Producer {
 
     }
 
-    @PostConstruct
-    public void init(){
-        //示例生产者
-        producer = new DefaultMQProducer(producerGroup);
-        //不开启vip通道 开通口端口会减2
-        producer.setVipChannelEnabled(false);
-        //绑定name server
-        producer.setNamesrvAddr(NAME_SERVER);
-        start();
-    }
+//    @PostConstruct
+//    public void init(){
+//        //示例生产者
+//        producer = new DefaultMQProducer(producerGroup);
+//        //不开启vip通道 开通口端口会减2
+//        producer.setVipChannelEnabled(false);
+//        //绑定name server
+//        producer.setNamesrvAddr(NAME_SERVER);
+//        start();
+//    }
     /**
      * 对象在使用之前必须要调用一次，只能初始化一次
      */
     public void start(){
         try {
+            //示例生产者
+            producer = new DefaultMQProducer(producerGroup);
+            //不开启vip通道 开通口端口会减2
+            producer.setVipChannelEnabled(false);
+            //绑定name server
+            producer.setNamesrvAddr(NAME_SERVER);
             this.producer.start();
         } catch (MQClientException e) {
             e.printStackTrace();

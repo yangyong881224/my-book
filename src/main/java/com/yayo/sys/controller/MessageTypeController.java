@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/admin/message_type")
 @Slf4j
@@ -24,9 +26,13 @@ public class MessageTypeController {
         return messageTypeService.paging(pageNo, pageSize);
     }
 
-
     @PostMapping("/create_or_update")
     public Boolean createOrUpdate(MessageTypeCreateRequest messageTypeCreateRequest){
         return messageTypeService.createOrUpdate(messageTypeCreateRequest);
+    }
+
+    @GetMapping("/list")
+    public List<MessageTypeDTO> list(){
+        return messageTypeService.list();
     }
 }

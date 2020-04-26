@@ -2,14 +2,18 @@ package com.yayo.base.mq.server;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
+import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -50,7 +54,6 @@ public class Consumer {
                 // 会把不同的消息分别放置到不同的队列中
                 //消费者获取消息 这里只输出 不做后面逻辑处理
                 consumeTask::consumeMessage);
-
         consumer.start();
         log.info("================RocketMQ Consumer start==============");
     }

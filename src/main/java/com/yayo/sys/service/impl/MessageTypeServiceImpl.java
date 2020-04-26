@@ -52,4 +52,9 @@ public class MessageTypeServiceImpl implements MessageTypeService {
             return messageTypeDao.update(messageType);
         }
     }
+
+    public List<MessageTypeDTO> list(){
+        List<MessageType> messageTypeList = messageTypeDao.listAll();
+        return messageTypeList.stream().map(messageTypeConverter::do2dto).collect(Collectors.toList());
+    }
 }
