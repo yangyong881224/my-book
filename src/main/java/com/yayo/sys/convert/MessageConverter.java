@@ -11,4 +11,6 @@ public interface MessageConverter {
     MessageInfo do2info(Message message);
 
     Message req2do(MessageCreateRequest request);
+
+    Message info2do(MessageInfo messageInfo);
 }

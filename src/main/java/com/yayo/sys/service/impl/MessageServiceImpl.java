@@ -1,7 +1,6 @@
 package com.yayo.sys.service.impl;
 
 import com.google.common.collect.Maps;
-import com.yayo.base.mq.server.node.MessageContext;
 import com.yayo.base.utils.PageInfo;
 import com.yayo.base.utils.Paging;
 import com.yayo.sys.controller.info.MessageInfo;
@@ -42,6 +41,7 @@ public class MessageServiceImpl implements MessageService {
         Map<String,Object> params = Maps.newHashMap();
         params.put("offset",pageInfo.getOffset());
         params.put("limit",pageInfo.getLimit());
+        params.put("createdBy","SYS");
         Paging<Message> messagePaging = messageDao.paging(params);
         if(messagePaging.isEmpty()){
             return Paging.empty();
@@ -66,14 +66,21 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Boolean sendMessage(Long id) {
-        for(int i = 0 ; i < 100 ; i ++){
-            Message message = messageDao.findById(id);
-            MessageType messageType = messageTypeDao.findById(message.getTypeId());
-            UserMessageContext userMessageContext = buildMessageContext(message,messageType);
-
-            messageProducer.sendMSG(userMessageContext);
+        Message message = messageDao.findById(id);
+        MessageType messageType = messageTypeDao.findById(message.getTypeId());
+        UserMessageContext userMessageContext = buildMessageContext(message,messageType);
+        Boolean result = messageProducer.sendMSG(userMessageContext);
+        if(result){
+            message.setSendStatus(1);
+            messageDao.update(message);
         }
-        return true;
+        return result;
+    }
+
+    @Override
+    public Boolean update(MessageInfo messageInfo) {
+        Message message = messageConverter.info2do(messageInfo);
+        return messageDao.update(message);
     }
 
     private UserMessageContext buildMessageContext(Message message, MessageType messageType) {

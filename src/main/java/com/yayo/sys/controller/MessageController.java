@@ -24,6 +24,7 @@ public class MessageController {
 
     @PostMapping("/create")
     public Boolean create(MessageCreateRequest messageCreateRequest){
+        messageCreateRequest.setCreatedBy("SYS");
         return messageService.create(messageCreateRequest);
     }
 

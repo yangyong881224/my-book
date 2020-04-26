@@ -14,6 +14,7 @@
         <result column="send_status" property="sendStatus"/>
         <result column="examined" property="examined"/>
         <result column="examine_status" property="examineStatus"/>
+        <result column="created_by" property="createdBy"/>
         <result column="created_at" property="createdAt"/>
     </resultMap>
     
@@ -27,17 +28,23 @@
     </sql>
 
     <sql id="cols">
-        `type_id`,`send_type`,`user_id`,`user_phone`,`title`,`content`,`send_status`,`examined`,`examine_status`,`created_at`
+        `type_id`,`send_type`,`user_id`,`user_phone`,`title`,`content`,`send_status`,`examined`,`examine_status`,`created_by`,`created_at`
     </sql>
 
     <sql id="vals">
-        #{typeId},#{sendType},#{userId},#{userPhone},#{title},#{content},0,#{examined},0,now()
+        #{typeId},#{sendType},#{userId},#{userPhone},#{title},#{content},0,#{examined},0,#{createdBy},now()
     </sql>
 
 
     <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
         SELECT COUNT(id) FROM
         <include refid="tb"/>
+        <where>
+            <if test="userId != null">AND user_id = #{userId}</if>
+            <if test="userPhone != null">AND user_phone = #{userPhone}</if>
+            <if test="createdBy != null">AND created_by = #{createdBy}</if>
+            <if test="sendStatus != null">AND send_status = #{sendStatus}</if>
+        </where>
     </select>
 
     <select id="paging" parameterType="java.util.Map" resultMap="MessageMap">
@@ -45,6 +52,12 @@
         <include refid="cols_all"/>
         FROM
         <include refid="tb"/>
+        <where>
+            <if test="userId != null">AND user_id = #{userId}</if>
+            <if test="userPhone != null">AND user_phone = #{userPhone}</if>
+            <if test="createdBy != null">AND created_by = #{createdBy}</if>
+            <if test="sendStatus != null">AND send_status = #{sendStatus}</if>
+        </where>
         ORDER BY created_at DESC
         LIMIT #{offset},#{limit}
     </select>
@@ -60,7 +73,7 @@
         UPDATE <include refid="tb"/>
         <set>
             <if test="examined!=null"> ,examined = #{examined}</if>
-            <if test="status!=null"> ,status = #{status}</if>
+            <if test="sendStatus!=null"> ,send_status = #{sendStatus}</if>
             <if test="examineStatus!=null"> ,examine_status = #{examineStatus}</if>
         </set>
         WHERE id = #{id}

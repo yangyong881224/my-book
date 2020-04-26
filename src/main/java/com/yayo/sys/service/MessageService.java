@@ -10,4 +10,6 @@ public interface MessageService {
     Boolean create(MessageCreateRequest messageCreateRequest);
 
     Boolean sendMessage(Long id);
+
+    Boolean update(MessageInfo messageInfo);
 }

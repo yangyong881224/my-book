@@ -185,6 +185,8 @@
 									sendHtml = "<button onclick='sendMessage(\""+message.id+"\")'>发送</button>" +
 											"<a href='#' class='btn btn-info'><i class='fa fa-edit'></i></a>" +
 											"<a href='javascript:void(0)' class='btn btn-danger' onclick='showDelete(\""+message.id+"\")'><i class='fa fa-trash-o'></i></a> </td>";
+								}else if(message.sendStatus == 1){
+							        statusHtml = "正在发送..."
 								}else{
 							        statusHtml = "消息已发送";
 								}
@@ -238,7 +240,11 @@
                 dataType:"json",
                 contentType:"application/x-www-form-urlencoded",
                 success:function(data){
-                    alert(data);
+                    if(data){
+                        paging(pageNo,pageSize);
+					}else{
+                        alert("发送失败");
+					}
                 },
                 error:function(jqXHR){
                     alert("发生错误："+ jqXHR.status);

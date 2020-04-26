@@ -12,5 +12,6 @@ public class MessageCreateRequest {
     private String title;
     private String content;
     private String examined;
+    private String createdBy;
 
 }

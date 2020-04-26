@@ -20,5 +20,6 @@ public class Message {
     private Integer examined;
     private Integer examineStatus;
 
+    private String createdBy;
     private Date createdAt;
 }
