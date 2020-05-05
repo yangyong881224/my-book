@@ -22,4 +22,5 @@ public class Message {
 
     private String createdBy;
     private Date createdAt;
+
 }
