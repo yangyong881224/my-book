@@ -36,7 +36,6 @@ public class ShiroUserRole {
 
     @After("shiroUserRole()")
     public void after(){
-        System.out.println("清除用户");
         RequestContext.clearUser();
         RequestContext.clearPerssion();
     }

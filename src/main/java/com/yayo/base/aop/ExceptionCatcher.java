@@ -16,7 +16,7 @@ public class ExceptionCatcher {
     public void catcher(){
 
     }
-
+//TODO add exception catcher
 //    @AfterThrowing(value = "catcher()")
 //    public void around(ProceedingJoinPoint proceedingJoinPoint){
 //        try {
@@ -30,9 +30,5 @@ public class ExceptionCatcher {
 //            throwable.printStackTrace();
 //        }
 //    }
-
-    @AfterThrowing(value = "catcher()")
-    public void around(){
-
-    }
+//
 }

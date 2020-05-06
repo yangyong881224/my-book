@@ -44,6 +44,9 @@
             <if test="userPhone != null">AND user_phone = #{userPhone}</if>
             <if test="createdBy != null">AND created_by = #{createdBy}</if>
             <if test="sendStatus != null">AND send_status = #{sendStatus}</if>
+            <if test="examined != null">AND examined = #{examined}</if>
+            <if test="title != null">AND title = #{title}</if>
+            <if test="examineStatus != null">AND examine_status = #{examineStatus}</if>
         </where>
     </select>
 
@@ -57,6 +60,9 @@
             <if test="userPhone != null">AND user_phone = #{userPhone}</if>
             <if test="createdBy != null">AND created_by = #{createdBy}</if>
             <if test="sendStatus != null">AND send_status = #{sendStatus}</if>
+            <if test="examined != null">AND examined = #{examined}</if>
+            <if test="title != null">AND title = #{title}</if>
+            <if test="examineStatus != null">AND examine_status = #{examineStatus}</if>
         </where>
         ORDER BY created_at DESC
         LIMIT #{offset},#{limit}
