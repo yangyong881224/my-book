@@ -8,7 +8,7 @@
     	<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>消息管理</title>
+	    <title>消息审核</title>
 
 		<!-- Favicon and touch icons -->
 		<link rel="shortcut icon" href="<%= path%>/assets/ico/favicon.ico" type="image/x-icon" />
@@ -34,30 +34,32 @@
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>消息管理</strong></h2>
+							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>消息审核</strong></h2>
 							<div class="panel-actions">
-								<a href="/choice_create"><button type="button" class="btn btn-primary" onclick="createChoice()"><i class="fa fa-plus"></i>新建</button></a>
+								<button type="button" class="btn btn-primary" onclick="createChoice()"><i class="fa fa-plus"></i>新建</button>
 							</div>
 						</div>
 						<div class="panel-body">
 							<table class="table table-bordered table-striped table-condensed table-hover">
 								<thead>
-									  <tr>
-										 <th style="width:5%">编号</th>
-										 <th>一级类目</th>
-										 <th>二级类目</th>
-										 <th>问题</th>
-										 <th style="width:20%">操作</th>
-									  </tr>
-								  </thead>   
-								  <tbody id="tbody">
+									<tr>
+										<th style="width:5%">编号</th>
+										<th>消息类型</th>
+										<th>发送对象</th>
+										<th>消息标题</th>
+										<th>消息内容</th>
+										<th>消息状态</th>
+										<th style="width:20%">操作</th>
+									</tr>
+								</thead>
+								<tbody id="tbody">
 
-								  </tbody>
-							 </table>  
-							 <ul class="pagination" style="float:right;margin-right: 50px">
+								</tbody>
+							</table>
+							<ul class="pagination" style="float:right;margin-right: 50px">
 								<li><a href="javascript:void(0)" onclick="prew()">上一页</a></li>
 								<li><a href="javascript:void(0)" onclick="next()">下一页</a></li>
-							  </ul>
+							</ul>
 						</div>
 					</div>
 				</div><!--/col-->
@@ -115,7 +117,7 @@
 		function paging(pageNo,pageSize){
 			$.ajax({
 				type:"GET",
-				url:"/api/admin/choice/list",
+				url:"/api/admin/message_examine/paging",
 				data:{
 					pageNo:pageNo,
 					pageSize:pageSize
@@ -124,24 +126,41 @@
 				contentType:"application/x-www-form-urlencoded",
 				success:function(data){
 					$("#tbody").html("");
-					if(data.total != 0 ){
-						total = data.total;
-						var html = "";
-						data.data.forEach(function(choiceDTO,index){
-							html += "<tr>" +
-									"<td>" + (index + 1) +"</td>" +
-									"<td>" + choiceDTO.categories1.categoriesName + "</td>" +
-									"<td>" + choiceDTO.categories2.categoriesName + "</td>" +
-									"<td>" + choiceDTO.choice.choiceQuestion + "</td>" +
-									"<td><a href='/choice_update/"+choiceDTO.choice.choiceId+"' class='btn btn-info'><i class='fa fa-edit'></i></a> " +
-									"<a href='javascript:void(0)' class='btn btn-danger' onclick='showConfirm(\""+choiceDTO.choice.choiceId+"\")'><i class='fa fa-trash-o'></i></a> </td>" +
-									"</tr>";
-						});
-						$("#tbody").html(html);
+                    if(!data.empty){
+                        total = data.total;
+                        var html = "";
+                        data.data.forEach(function(message,index){
+                            var statusHtml = "";
 
-					}else{
-						alert(data.msg);
-					}
+							if(message.examineStatus == 0){
+								statusHtml = "未审核";
+							}else if (message.examineStatus == 1){
+								statusHtml = "审核通过，消息已发送";
+							}else{
+								statusHtml = "审核未通过";
+							}
+
+                            //发送对象
+                            var sendTypeHtml = "";
+                            if(message.sendType == 0){
+                                sendTypeHtml = "所有用户";
+                            }else if(message.sendType == 1){
+                                sendTypeHtml = message.userPhone;
+                            }
+                            html += "<tr>" +
+                                "<td>" + (index + 1) +"</td>" +
+                                "<td>" + message.typeName + "</td>" +
+                                "<td>" + sendTypeHtml + "</td>" +
+                                "<td>" + message.title + "</td>" +
+                                "<td>" + message.content + "</td>" +
+                                "<td>" + statusHtml + "</td>" +
+                                "<td>" + "审核" + "</td>" +
+                                "</tr>";
+                        });
+                        $("#tbody").html(html);
+                    }else{
+                        $("#tbody").html("<tr><td colspan='7'>还没有消息...</td></tr>");
+                    }
 				},
 				error:function(jqXHR){
 					alert("发生错误："+ jqXHR.status);

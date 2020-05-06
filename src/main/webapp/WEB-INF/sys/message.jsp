@@ -43,13 +43,13 @@
 							<table class="table table-bordered table-striped table-condensed table-hover">
 								<thead>
 									  <tr>
-										 <th style="width:5%">编号</th>
-										 <th>消息类型</th>
-										 <th>发送对象</th>
+										  <th style="width:5%">编号</th>
+										  <th>消息类型</th>
+										  <th>发送对象</th>
 										  <th>消息标题</th>
 										  <th>消息内容</th>
-										 <th>消息状态</th>
-										 <th style="width:20%">操作</th>
+										  <th>消息状态</th>
+										  <th style="width:20%">操作</th>
 									  </tr>
 								  </thead>   
 								  <tbody id="tbody">

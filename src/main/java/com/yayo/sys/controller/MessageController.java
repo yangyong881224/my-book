@@ -3,6 +3,7 @@ package com.yayo.sys.controller;
 import com.yayo.base.utils.Paging;
 import com.yayo.sys.controller.info.MessageInfo;
 import com.yayo.sys.controller.request.MessageCreateRequest;
+import com.yayo.sys.mapper.dataobject.Message;
 import com.yayo.sys.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,9 @@ public class MessageController {
 
     @GetMapping("/paging")
     public Paging<MessageInfo> paging(Integer pageNo, Integer pageSize){
-        return messageService.paging(pageNo,pageSize);
+        Message message = new Message();
+        message.setCreatedBy("SYS");
+        return messageService.paging(pageNo,pageSize,message);
     }
 
     @PostMapping("/create")

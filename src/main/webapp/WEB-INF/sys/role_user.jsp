@@ -92,7 +92,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">添加</h4>
+				<h4 class="modal-title"></h4>
 			</div>
 			<div class="modal-body">
 				<input type="hidden" id="userId">
@@ -285,6 +285,7 @@
 
 		function confirmForm(){
 		    if(checkUser()){
+		        var id = $("#userRoleId").val();
 		        var userId = $("#userId").val();
 		        var roleId = $("#roleSelect").val();
 		        var targetType = $("#roleSelect").find("option:selected").attr("target");
@@ -292,6 +293,7 @@
                     type:"POST",
                     url:"/api/admin/role_user/create_or_update",
                     data:{
+                        id:id,
 						userId:userId,
 						roleId:roleId,
 						targetType:targetType

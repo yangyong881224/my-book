@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/admin/message_examin")
+@RequestMapping("/api/admin/message_examine")
 @Slf4j
 public class MessageExamineController {
 

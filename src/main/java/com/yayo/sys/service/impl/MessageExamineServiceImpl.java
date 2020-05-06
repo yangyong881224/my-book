@@ -8,6 +8,7 @@ import com.yayo.sys.convert.MessageConverter;
 import com.yayo.sys.mapper.MessageDao;
 import com.yayo.sys.mapper.dataobject.Message;
 import com.yayo.sys.service.MessageExamineService;
+import com.yayo.sys.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,23 +25,16 @@ public class MessageExamineServiceImpl implements MessageExamineService {
     @Autowired
     private MessageConverter messageConverter;
 
+    @Autowired
+    private MessageService messageService;
+
     @Override
     public Paging<MessageInfo> paging(Integer pageNo, Integer pageSize, String title, Integer examineStatus) {
-        PageInfo pageInfo = new PageInfo(pageNo, pageSize);
-        Map<String,Object> params = Maps.newHashMap();
-        params.put("offset",pageInfo.getOffset());
-        params.put("limit",pageInfo.getLimit());
-        params.put("title",title);
-        params.put("examineStatus",examineStatus);
-        //需要审核的
-        params.put("examined",1);
-        //手动发送的
-        params.put("createdBy","SYS");
-        Paging<Message> messagePaging = messageDao.paging(params);
-        if(messagePaging.isEmpty()){
-            return Paging.empty();
-        }
-        List<MessageInfo> list = messagePaging.getData().stream().map(messageConverter::do2info).collect(Collectors.toList());
-        return new Paging<>(messagePaging.getTotal(),list);
+        Message message = new Message();
+        message.setTitle(title);
+        message.setExamineStatus(examineStatus);
+        message.setExamined(1);
+        message.setCreatedBy("SYS");
+        return messageService.paging(pageNo,pageSize,message);
     }
 }

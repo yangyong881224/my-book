@@ -36,12 +36,12 @@ public class MessageServiceImpl implements MessageService {
     private MessageProducer messageProducer;
 
     @Override
-    public Paging<MessageInfo> paging(Integer pageNo, Integer pageSize) {
+    public Paging<MessageInfo> paging(Integer pageNo, Integer pageSize,Message message) {
         PageInfo pageInfo = new PageInfo(pageNo , pageSize);
         Map<String,Object> params = Maps.newHashMap();
         params.put("offset",pageInfo.getOffset());
         params.put("limit",pageInfo.getLimit());
-        params.put("createdBy","SYS");
+        buildFindMessageParams(params , message);
         Paging<Message> messagePaging = messageDao.paging(params);
         if(messagePaging.isEmpty()){
             return Paging.empty();
@@ -57,6 +57,18 @@ public class MessageServiceImpl implements MessageService {
             messageInfo.setTypeName(messageType.getMessageType());
         });
         return new Paging<>(messagePaging.getTotal(),messageInfoList);
+    }
+
+    private void buildFindMessageParams(Map<String,Object> params, Message message) {
+        params.put("sendType",message.getSendType());
+        params.put("userId",message.getUserId());
+        params.put("userPhone",message.getUserPhone());
+        params.put("title",message.getTitle());
+        params.put("content",message.getContent());
+        params.put("sendStatus",message.getSendStatus());
+        params.put("examined",message.getExamined());
+        params.put("examineStatus",message.getExamineStatus());
+        params.put("createdBy",message.getCreatedBy());
     }
 
     @Override
